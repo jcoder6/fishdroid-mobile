@@ -1,3 +1,4 @@
+import 'package:fishdroid/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -47,10 +48,19 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
         ),
       ],
       onTap: (index) {
-        setState(() {
-          _currentIndex = index;
-          widget.onTabSelected(index);
-        });
+        Navigator.push(
+    context,
+    PageRouteBuilder(
+            transitionDuration: const Duration(milliseconds: 500),
+            pageBuilder: (context, animation, secondaryAnimation) => MyHomePage(pageIndex: index),
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              return FadeTransition(
+                opacity: animation,
+                child: child,
+              );
+            },
+          ),
+        );
       },
     );
   }

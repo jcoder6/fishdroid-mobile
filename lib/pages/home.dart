@@ -4,9 +4,10 @@ import '../includes/home_bottom_nav.dart';
 import '../includes/home_drawer.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title}); 
+  final int pageIndex;
+  const MyHomePage({Key? key, required this.pageIndex}) : super(key: key);
 
-  final String title;
+
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -23,10 +24,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final tabs = [
     const Home(),
-    Center(child: Text('Fishes')),
+    Center(child: new Text('Fishes')),
     Center(child: Text('Camare')),
     Center(child: Text('Recipes')),
-    Center(child: Text('Fun Facts'))
+    Center(child: Text('Fun Facts')),
+    Center(child: Text('Quizzes')),
+    Center(child: Text('Nutrinon')),
+    Center(child: Text('Terminologies')),
+    Center(child: Text('Hatchery'))
   ];
 
   @override
@@ -34,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         appBar: HomeAppBar(),
         endDrawer: HomeDrawer(),
-        body: tabs[_currentIndex],
+        body: tabs[widget.pageIndex],
         bottomNavigationBar: CustomBottomNavigationBar(
           onTabSelected: _onTabSelected,
         ),
