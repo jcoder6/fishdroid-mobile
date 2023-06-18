@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
-  final void Function(int) onTabSelected;
+  final int onTabSelected;
 
   const CustomBottomNavigationBar({Key? key, required this.onTabSelected})
       : super(key: key);
@@ -14,12 +14,10 @@ class CustomBottomNavigationBar extends StatefulWidget {
 }
 
 class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
-  int _currentIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      currentIndex: _currentIndex,
+      currentIndex: widget.onTabSelected,
       type: BottomNavigationBarType.fixed,
       backgroundColor: const Color(0xffC5D7F0),
       fixedColor: const Color.fromARGB(255, 33, 120, 197),
@@ -49,8 +47,8 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       ],
       onTap: (index) {
         Navigator.push(
-    context,
-    PageRouteBuilder(
+        context,
+        PageRouteBuilder(
             transitionDuration: const Duration(milliseconds: 500),
             pageBuilder: (context, animation, secondaryAnimation) => MyHomePage(pageIndex: index),
             transitionsBuilder: (context, animation, secondaryAnimation, child) {
