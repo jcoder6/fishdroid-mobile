@@ -8,7 +8,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Color(0xffC5D7F0),
+      backgroundColor: Colors.transparent,
       elevation: 0,
       title: Container(
         margin: EdgeInsets.only(top: 10),

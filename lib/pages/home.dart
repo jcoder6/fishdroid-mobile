@@ -1,3 +1,4 @@
+import 'package:fishdroid/pages/app_home.dart';
 import 'package:flutter/material.dart';
 import '../includes/home_app_bar.dart';
 import '../includes/home_bottom_nav.dart';
@@ -6,8 +7,6 @@ import '../includes/home_drawer.dart';
 class MyHomePage extends StatefulWidget {
   final int pageIndex;
   const MyHomePage({Key? key, required this.pageIndex}) : super(key: key);
-
-
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -18,12 +17,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _onTabSelected(int index) {
     setState(() {
-      _currentIndex = index;
+      _currentIndex = widget.pageIndex;
     });
   }
 
   final tabs = [
-    const Home(),
+    const AppHome(),
     Center(child: new Text('Fishes')),
     Center(child: Text('Camare')),
     Center(child: Text('Recipes')),
@@ -37,21 +36,13 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: HomeAppBar(),
-        endDrawer: HomeDrawer(),
-        body: tabs[widget.pageIndex],
-        bottomNavigationBar: CustomBottomNavigationBar(
-          onTabSelected: _onTabSelected,
-        ),
-      );
-  }
-}
-
-class Home extends StatelessWidget {
-  const Home({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(child: Text('Home'));
+      backgroundColor: Color.fromARGB(255, 238, 238, 238),
+      appBar: HomeAppBar(),
+      endDrawer: HomeDrawer(),
+      body: tabs[widget.pageIndex],
+      bottomNavigationBar: CustomBottomNavigationBar(
+        onTabSelected: widget.pageIndex,
+      ),
+    );
   }
 }
