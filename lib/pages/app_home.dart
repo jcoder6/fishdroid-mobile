@@ -12,11 +12,16 @@ class AppHome extends StatefulWidget {
 
 class _AppHomeState extends State<AppHome> {
   List<Fish> fishesList = [
-    Fish('images/fishes/fish1.jpg', 'Pantat', 'Basta Isda', 2),
-    Fish('images/fishes/fish1.jpg', 'Pantat', 'Basta Isda', 2),
-    Fish('images/fishes/fish1.jpg', 'Pantat', 'Basta Isda', 2),
-    Fish('images/fishes/fish1.jpg', 'Pantat', 'Basta Isda', 2),
-    Fish('images/fishes/fish1.jpg', 'Pantat', 'Basta Isda', 2),
+    Fish('images/fishes/fish1.jpg', 'Pantat', 'Basta Isda', 2, 'Siluriformes',
+        'local name', '3-5years'),
+    Fish('images/fishes/fish1.jpg', 'Pantat', 'Basta Isda', 2, 'Siluriformes',
+        'local name', '3-5years'),
+    Fish('images/fishes/fish1.jpg', 'Pantat', 'Basta Isda', 2, 'Siluriformes',
+        'local name', '3-5years'),
+    Fish('images/fishes/fish1.jpg', 'Pantat', 'Basta Isda', 2, 'Siluriformes',
+        'local name', '3-5years'),
+    Fish('images/fishes/fish1.jpg', 'Pantat', 'Basta Isda', 2, 'Siluriformes',
+        'local name', '3-5years'),
   ];
 
   @override
