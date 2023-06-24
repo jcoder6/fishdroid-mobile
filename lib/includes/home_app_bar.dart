@@ -8,7 +8,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Color(0xff0c82df),
       elevation: 0,
       title: Container(
         margin: EdgeInsets.only(top: 10),
@@ -31,12 +31,6 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
           ],
         ),
-      ),
-      leading: IconButton(
-        icon: FaIcon(FontAwesomeIcons.arrowLeft),
-        onPressed: () => {
-          // do something
-        },
       ),
       // actions: [
       //   IconButton(onPressed: () => {}, icon: Icon(Icons.search)),
