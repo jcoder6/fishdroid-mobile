@@ -20,7 +20,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       currentIndex: widget.onTabSelected,
       type: BottomNavigationBarType.fixed,
       backgroundColor: const Color(0xffC5D7F0),
-      fixedColor: const Color.fromARGB(255, 33, 120, 197),
+      // fixedColor: const Color.fromARGB(255, 33, 120, 197),
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.home, color: Color(0xff154670)),

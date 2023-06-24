@@ -1,4 +1,5 @@
 import 'package:fishdroid/pages/app_home.dart';
+import 'package:fishdroid/pages/fish_Page.dart';
 import 'package:flutter/material.dart';
 import '../includes/home_app_bar.dart';
 import '../includes/home_bottom_nav.dart';
@@ -17,18 +18,20 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _onTabSelected(int index) {
     setState(() {
-      _currentIndex = widget.pageIndex;
+      _currentIndex = (widget.pageIndex < 5) ?  widget.pageIndex : 0;
     });
+
   }
+
 
   final tabs = [
     const AppHome(),
-    Center(child: new Text('Fishes')),
-    Center(child: Text('Camare')),
+    const FishPages(),
+    Center(child: Text('Camera')),
     Center(child: Text('Recipes')),
     Center(child: Text('Fun Facts')),
     Center(child: Text('Quizzes')),
-    Center(child: Text('Nutrinon')),
+    Center(child: Text('Nutrintion')),
     Center(child: Text('Terminologies')),
     Center(child: Text('Hatchery'))
   ];
@@ -41,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
       endDrawer: HomeDrawer(),
       body: tabs[widget.pageIndex],
       bottomNavigationBar: CustomBottomNavigationBar(
-        onTabSelected: widget.pageIndex,
+        onTabSelected: (widget.pageIndex < 5) ?  widget.pageIndex : 0,
       ),
     );
   }
