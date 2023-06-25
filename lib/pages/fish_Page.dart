@@ -11,16 +11,16 @@ class FishPages extends StatefulWidget {
 
 class _FishPagesState extends State<FishPages> {
   List<Fish> fishesList = [
-    Fish('images/fishes/fish1.jpg', 'Pantat', 'Basta Isda', 2, 'Siluriformes',
-        'local name', '3-5years'),
-    Fish('images/fishes/fish1.jpg', 'Pantat', 'Basta Isda', 2, 'Siluriformes',
-        'local name', '3-5years'),
-    Fish('images/fishes/fish1.jpg', 'Pantat', 'Basta Isda', 2, 'Siluriformes',
-        'local name', '3-5years'),
-    Fish('images/fishes/fish1.jpg', 'Pantat', 'Basta Isda', 2, 'Siluriformes',
-        'local name', '3-5years'),
-    Fish('images/fishes/fish1.jpg', 'Pantat', 'Basta Isda', 2, 'Siluriformes',
-        'local name', '3-5years'),
+    Fish('images/fishes/1.jpg', 'Needlescaled Queenfish', 'Tulong-Tulong', 2, 'Scomberoides tol', 'Carangidae', 'Some Description'),
+    Fish('images/fishes/2.jpg', 'Malabar trevally', 'Talakitok', 2, 'Carangoides malabaricus', 'Carangidae', 'Some Description'),
+    Fish('images/fishes/3.jpg', 'Shortfin scad', 'Galonggong', 2, 'Decapterus macrosoma', 'Carangidae', 'Some Description'),
+    Fish('images/fishes/4.jpg', 'Torpedo scad', 'Bonito', 2, 'Megalaspis cordyla', 'Carangidae', 'Some Description'),
+    Fish('images/fishes/5.jpg', 'Black pomfret', 'Pampano', 2, 'Parastromateus niger', 'Carangidae', 'Some Description'),
+    Fish('images/fishes/6.jpg', 'smalltoothed ponyfish', 'Sap-sap', 2, 'Gazza achlamys', 'Leiognathidae', 'Some Description'),
+    Fish('images/fishes/7.jpg', 'Gazza achlamys', 'Sap-sap mabeng', 2, 'Leiognathus elongatus', 'Leiognathidae', 'Some Description'),
+    Fish('images/fishes/8.jpg', 'Saddle grunt ', 'Sagsagir', 2, 'Pomadasys maculatus', 'Haemulidae', 'Some Description'),
+    Fish('images/fishes/9.jpg', 'Blacktip sardinella', 'Toyo', 2, 'Sardinella melanura', 'Clupeidae', 'Some Description'),
+    Fish('images/fishes/10.jpg', 'Batfish', 'Bayong', 2, 'Platax orbicularis', 'Ephippidae', 'Some Description'),
   ];
 
   @override
@@ -117,8 +117,8 @@ class _FishPagesState extends State<FishPages> {
                           // color: Colors.blueAccent,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            image: const DecorationImage(
-                                image: AssetImage("images/fishes/pish.PNG"),
+                            image: DecorationImage(
+                                image: AssetImage(item.imgPath),
                                 fit: BoxFit.fill),
                           ),
                         ),
@@ -128,10 +128,10 @@ class _FishPagesState extends State<FishPages> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text('Name: ${item.fishName}', style: TextStyle(color: Color(0xff154670)),),
-                              Text('Scientific: ${item.sciName}', style: TextStyle(color: Color(0xff154670)),),
-                              Text('Lifespan: ${item.lifeSpan}', style: TextStyle(color: Color(0xff154670)),),
-                              Text('Local Name: ${item.fishName}', style: TextStyle(color: Color(0xff154670)),),
+                              Text(item.fishName, style: const TextStyle(color: Color(0xff154670)),),
+                              Text(item.fishSciName, style: const TextStyle(color: Color(0xff154670)),),
+                              Text(item.fishFamName, style: const TextStyle(color: Color(0xff154670)),),
+                              Text(item.localName, style: const TextStyle(color: Color(0xff154670)),),
                             ],
                           ),
                         )
