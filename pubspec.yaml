@@ -61,6 +61,17 @@ flutter:
     - images/fishdroid-logo.png
     - images/logobfar.png
     - images/fishes/pish.PNG
+    - images/fishes/1.jpg
+    - images/fishes/2.jpg
+    - images/fishes/3.jpg
+    - images/fishes/4.jpg
+    - images/fishes/5.jpg
+    - images/fishes/6.jpg
+    - images/fishes/7.jpg
+    - images/fishes/8.jpg
+    - images/fishes/8.jpg
+    - images/fishes/9.jpg
+    - images/fishes/10.jpg
 
   # example:
   # fonts:
