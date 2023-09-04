@@ -72,6 +72,10 @@ flutter:
     - images/fishes/8.jpg
     - images/fishes/9.jpg
     - images/fishes/10.jpg
+    - images/recipes/RECIPE_IMG_001.PNG
+    - images/recipes/RECIPE_IMG_002.jpg
+    - images/recipes/RECIPE_IMG_003.jpeg
+    - images/recipes/RECIPE_IMG_004.jpg
 
   # example:
   # fonts:

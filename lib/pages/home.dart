@@ -1,5 +1,6 @@
 import 'package:fishdroid/pages/app_home.dart';
 import 'package:fishdroid/pages/fish_Page.dart';
+import 'package:fishdroid/pages/recipes.dart';
 import 'package:flutter/material.dart';
 import '../includes/home_app_bar.dart';
 import '../includes/home_bottom_nav.dart';
@@ -28,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
     const AppHome(),
     const FishPages(),
     Center(child: Text('Camera')),
-    Center(child: Text('Recipes')),
+    const Recipes(),
     Center(child: Text('Fun Facts')),
     Center(child: Text('Quizzes')),
     Center(child: Text('Nutrition')),
