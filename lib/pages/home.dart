@@ -31,17 +31,17 @@ class _MyHomePageState extends State<MyHomePage> {
     Center(child: Text('Recipes')),
     Center(child: Text('Fun Facts')),
     Center(child: Text('Quizzes')),
-    Center(child: Text('Nutrintion')),
+    Center(child: Text('Nutrition')),
     Center(child: Text('Terminologies')),
-    Center(child: Text('Hatchery'))
+    Center(child: Text('Hatchery')),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 238, 238, 238),
+      backgroundColor: const Color.fromARGB(255, 238, 238, 238),
       appBar: HomeAppBar(),
-      endDrawer: HomeDrawer(),
+      endDrawer: const HomeDrawer(),
       body: tabs[widget.pageIndex],
       bottomNavigationBar: CustomBottomNavigationBar(
         onTabSelected: (widget.pageIndex < 5) ?  widget.pageIndex : 0,

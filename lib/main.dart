@@ -1,5 +1,6 @@
 import 'package:fishdroid/pages/home.dart';
 import 'package:fishdroid/includes/splash.dart';
+import 'package:fishdroid/pages/view_fish_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(pageIndex: 0),
+      home: const ViewFishPage(1),
       debugShowCheckedModeBanner: false,
     );
   }

@@ -1,9 +1,11 @@
+import 'package:fishdroid/pages/home.dart';
+import 'package:fishdroid/pages/view_fish_page.dart';
 import 'package:flutter/material.dart';
 
 import '../data/fishes.dart';
 
 class FishPages extends StatefulWidget {
-  const FishPages({super.key});
+  const FishPages({Key? key}) : super(key: key);
 
   @override
   State<FishPages> createState() => _FishPagesState();
@@ -11,16 +13,26 @@ class FishPages extends StatefulWidget {
 
 class _FishPagesState extends State<FishPages> {
   List<Fish> fishesList = [
-    Fish('images/fishes/1.jpg', 'Needlescaled Queenfish', 'Tulong-Tulong', 2, 'Scomberoides tol', 'Carangidae', 'Some Description'),
-    Fish('images/fishes/2.jpg', 'Malabar trevally', 'Talakitok', 2, 'Carangoides malabaricus', 'Carangidae', 'Some Description'),
-    Fish('images/fishes/3.jpg', 'Shortfin scad', 'Galonggong', 2, 'Decapterus macrosoma', 'Carangidae', 'Some Description'),
-    Fish('images/fishes/4.jpg', 'Torpedo scad', 'Bonito', 2, 'Megalaspis cordyla', 'Carangidae', 'Some Description'),
-    Fish('images/fishes/5.jpg', 'Black pomfret', 'Pampano', 2, 'Parastromateus niger', 'Carangidae', 'Some Description'),
-    Fish('images/fishes/6.jpg', 'smalltoothed ponyfish', 'Sap-sap', 2, 'Gazza achlamys', 'Leiognathidae', 'Some Description'),
-    Fish('images/fishes/7.jpg', 'Gazza achlamys', 'Sap-sap mabeng', 2, 'Leiognathus elongatus', 'Leiognathidae', 'Some Description'),
-    Fish('images/fishes/8.jpg', 'Saddle grunt ', 'Sagsagir', 2, 'Pomadasys maculatus', 'Haemulidae', 'Some Description'),
-    Fish('images/fishes/9.jpg', 'Blacktip sardinella', 'Toyo', 2, 'Sardinella melanura', 'Clupeidae', 'Some Description'),
-    Fish('images/fishes/10.jpg', 'Batfish', 'Bayong', 2, 'Platax orbicularis', 'Ephippidae', 'Some Description'),
+    Fish('images/fishes/1.jpg', 'Needlescaled Queenfish', 'Tulong-Tulong', 1,
+        'Scomberoides tol', 'Carangidae', 'Some Description'),
+    Fish('images/fishes/2.jpg', 'Malabar trevally', 'Talakitok', 2,
+        'Carangoides malabaricus', 'Carangidae', 'Some Description'),
+    Fish('images/fishes/3.jpg', 'Shortfin scad', 'Galonggong', 3,
+        'Decapterus macrosoma', 'Carangidae', 'Some Description'),
+    Fish('images/fishes/4.jpg', 'Torpedo scad', 'Bonito', 4,
+        'Megalaspis cordyla', 'Carangidae', 'Some Description'),
+    Fish('images/fishes/5.jpg', 'Black pomfret', 'Pampano', 5,
+        'Parastromateus niger', 'Carangidae', 'Some Description'),
+    Fish('images/fishes/6.jpg', 'smalltoothed ponyfish', 'Sap-sap', 6,
+        'Gazza achlamys', 'Leiognathidae', 'Some Description'),
+    Fish('images/fishes/7.jpg', 'Gazza achlamys', 'Sap-sap mabeng', 7,
+        'Leiognathus elongatus', 'Leiognathidae', 'Some Description'),
+    Fish('images/fishes/8.jpg', 'Saddle grunt ', 'Sagsagir', 8,
+        'Pomadasys maculatus', 'Haemulidae', 'Some Description'),
+    Fish('images/fishes/9.jpg', 'Blacktip sardinella', 'Toyo', 9,
+        'Sardinella melanura', 'Clupeidae', 'Some Description'),
+    Fish('images/fishes/10.jpg', 'Batfish', 'Bayong', 10, 'Platax orbicularis',
+        'Ephippidae', 'Some Description'),
   ];
 
   @override
@@ -90,52 +102,76 @@ class _FishPagesState extends State<FishPages> {
                     .length, // Replace with the actual number of items in your list
                 itemBuilder: (BuildContext context, int index) {
                   var item = fishesList[index];
-                  return Container(
-                    margin: const EdgeInsets.only(bottom: 20),
-                    decoration: BoxDecoration(
-                      color: const Color(0xffC5D7F0),
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color:
-                              Color.fromARGB(255, 107, 107, 107).withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 3,
-                          offset: Offset(2, 2), // Adjust the values as needed
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ViewFishPage(item.fishId),
                         ),
-                      ],
-                    ),
-                    padding: const EdgeInsets.all(15.0),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 100,
-                          height: 100,
-                          margin: const EdgeInsets.only(
-                            right: 10
+                      );
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.only(bottom: 20),
+                      decoration: BoxDecoration(
+                        color: const Color(0xffC5D7F0),
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color.fromARGB(255, 107, 107, 107)
+                                .withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 3,
+                            offset: Offset(2, 2), // Adjust the values as needed
                           ),
-                          // color: Colors.blueAccent,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            image: DecorationImage(
-                                image: AssetImage(item.imgPath),
-                                fit: BoxFit.fill),
+                        ],
+                      ),
+                      padding: const EdgeInsets.all(15.0),
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 100,
+                            height: 100,
+                            margin: const EdgeInsets.only(right: 10),
+                            // color: Colors.blueAccent,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              image: DecorationImage(
+                                  image: AssetImage(item.imgPath),
+                                  fit: BoxFit.fill),
+                            ),
                           ),
-                        ),
-                        Container(
-                          height: 100,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(item.fishName, style: const TextStyle(color: Color(0xff154670)),),
-                              Text(item.fishSciName, style: const TextStyle(color: Color(0xff154670)),),
-                              Text(item.fishFamName, style: const TextStyle(color: Color(0xff154670)),),
-                              Text(item.localName, style: const TextStyle(color: Color(0xff154670)),),
-                            ],
-                          ),
-                        )
-                      ],
+                          Container(
+                            height: 100,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  item.fishName,
+                                  style:
+                                      const TextStyle(color: Color(0xff154670)),
+                                ),
+                                Text(
+                                  item.fishSciName,
+                                  style:
+                                      const TextStyle(color: Color(0xff154670)),
+                                ),
+                                Text(
+                                  item.fishFamName,
+                                  style:
+                                      const TextStyle(color: Color(0xff154670)),
+                                ),
+                                Text(
+                                  item.localName,
+                                  style:
+                                      const TextStyle(color: Color(0xff154670)),
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   );
                 },
