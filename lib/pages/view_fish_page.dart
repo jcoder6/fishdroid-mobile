@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../includes/home_app_bar.dart';
 import '../includes/home_drawer.dart';
 
@@ -33,10 +31,10 @@ class _ViewFishPageState extends State<ViewFishPage> {
                     image: AssetImage('images/fishes/6.jpg'), fit: BoxFit.fill),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.withOpacity(0.5), // Shadow color
-                    spreadRadius: 5, // Spread radius
-                    blurRadius: 7, // Blur radius
-                    offset: Offset(0, 3), // Offset of the shadow
+                    color: Color.fromARGB(255, 107, 107, 107).withOpacity(0.5),
+                    spreadRadius: 2,
+                    blurRadius: 3,
+                    offset: Offset(2, 2), // Adjust the values as needed
                   ),
                 ],
               ),
@@ -46,10 +44,19 @@ class _ViewFishPageState extends State<ViewFishPage> {
               margin: EdgeInsets.symmetric(horizontal: 20),
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                  color: Color(0xffC5D7F0),
-                  borderRadius: BorderRadius.circular(10)),
+                color: Color(0xffC5D7F0),
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Color.fromARGB(255, 107, 107, 107).withOpacity(0.5),
+                    spreadRadius: 2,
+                    blurRadius: 3,
+                    offset: Offset(2, 2), // Adjust the values as needed
+                  ),
+                ],
+              ),
               child: Padding(
-                padding: EdgeInsets.all(10.0),
+                padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 30.0),
                 child: Column(
                   children: [
                     Center(
@@ -108,10 +115,46 @@ class _ViewFishPageState extends State<ViewFishPage> {
                       ],
                     ),
                     const SizedBox(height: 15),
-                    Text('Description', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Color(0xff154670),
+                            borderRadius: BorderRadius.circular(100)
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Center(
+                              child: FaIcon(FontAwesomeIcons.utensils, size: 14, color: Colors.white,),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 10,),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Color(0xff154670),
+                            borderRadius: BorderRadius.circular(100)
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Center(
+                              child: FaIcon(FontAwesomeIcons.heartPulse, size: 14, color: Colors.white,),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                    const SizedBox(height: 15),
+                    Text(
+                      'Description',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    ),
                     const SizedBox(height: 10),
-                    Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula ante eu purus bibendum, at fermentum libero efficitur. Cras ut quam euismod, vulputate nunc sed, fringilla quam. Integer vestibulum mi at neque cursus, id bibendum orci laoreet', 
-                      style: TextStyle(fontSize: 16, height: 1.5),
+                    Text(
+                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula ante eu purus bibendum, at fermentum libero efficitur. Cras ut quam euismod, vulputate nunc sed, fringilla quam. Integer vestibulum mi at neque cursus, id bibendum orci laoreet',
+                      style: TextStyle(fontSize: 16, height: 2),
                     )
                   ],
                 ),

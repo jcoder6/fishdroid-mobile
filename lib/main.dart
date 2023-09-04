@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const ViewFishPage(1),
+      home: const MyHomePage(pageIndex: 3,),
       debugShowCheckedModeBanner: false,
     );
   }
