@@ -2,6 +2,7 @@ import 'package:fishdroid/pages/home.dart';
 import 'package:fishdroid/includes/splash.dart';
 import 'package:fishdroid/pages/nutrition.dart';
 import 'package:fishdroid/pages/view_fish_page.dart';
+import 'package:fishdroid/pages/view_hatching_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
