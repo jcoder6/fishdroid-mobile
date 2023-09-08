@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../includes/home_app_bar.dart';
 import '../includes/home_drawer.dart';
 
 class ViewRecipePage extends StatefulWidget {
   final int fishId, recipeID;
   final String recipeName, recipeImg, recipeSteps;
-  const ViewRecipePage(this.fishId, this.recipeID, this.recipeName, this.recipeImg, this.recipeSteps, {super.key});
+  const ViewRecipePage(this.fishId, this.recipeID, this.recipeName,
+      this.recipeImg, this.recipeSteps,
+      {super.key});
 
   @override
   State<ViewRecipePage> createState() => _ViewRecipePageState();
@@ -30,10 +31,12 @@ class _ViewRecipePageState extends State<ViewRecipePage> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   image: DecorationImage(
-                      image: AssetImage('images/recipes/${widget.recipeImg}'), fit: BoxFit.fill),
+                      image: AssetImage('images/recipes/${widget.recipeImg}'),
+                      fit: BoxFit.fill),
                   boxShadow: [
                     BoxShadow(
-                      color: Color.fromARGB(255, 107, 107, 107).withOpacity(0.5),
+                      color:
+                          Color.fromARGB(255, 107, 107, 107).withOpacity(0.5),
                       spreadRadius: 2,
                       blurRadius: 3,
                       offset: Offset(2, 2), // Adjust the values as needed
@@ -50,7 +53,8 @@ class _ViewRecipePageState extends State<ViewRecipePage> {
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: [
                     BoxShadow(
-                      color: Color.fromARGB(255, 107, 107, 107).withOpacity(0.5),
+                      color:
+                          Color.fromARGB(255, 107, 107, 107).withOpacity(0.5),
                       spreadRadius: 2,
                       blurRadius: 3,
                       offset: Offset(2, 2), // Adjust the values as needed
@@ -58,22 +62,25 @@ class _ViewRecipePageState extends State<ViewRecipePage> {
                   ],
                 ),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 30.0),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 15.0, horizontal: 30.0),
                   child: Column(
                     children: [
                       Center(
                         child: Text(
                           widget.recipeName,
                           style: const TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold,),
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                       const SizedBox(height: 30),
                       const Text(
                         'Instruction',
                         textAlign: TextAlign.center,
-                        style:
-                            TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
                       ),
                       const SizedBox(height: 10),
                       Text(

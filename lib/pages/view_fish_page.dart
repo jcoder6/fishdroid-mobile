@@ -1,3 +1,4 @@
+import 'package:fishdroid/pages/nutrition.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../includes/home_app_bar.dart';
@@ -29,10 +30,12 @@ class _ViewFishPageState extends State<ViewFishPage> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   image: DecorationImage(
-                      image: AssetImage('images/fishes/6.jpg'), fit: BoxFit.fill),
+                      image: AssetImage('images/fishes/6.jpg'),
+                      fit: BoxFit.fill),
                   boxShadow: [
                     BoxShadow(
-                      color: Color.fromARGB(255, 107, 107, 107).withOpacity(0.5),
+                      color:
+                          Color.fromARGB(255, 107, 107, 107).withOpacity(0.5),
                       spreadRadius: 2,
                       blurRadius: 3,
                       offset: Offset(2, 2), // Adjust the values as needed
@@ -49,7 +52,8 @@ class _ViewFishPageState extends State<ViewFishPage> {
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: [
                     BoxShadow(
-                      color: Color.fromARGB(255, 107, 107, 107).withOpacity(0.5),
+                      color:
+                          Color.fromARGB(255, 107, 107, 107).withOpacity(0.5),
                       spreadRadius: 2,
                       blurRadius: 3,
                       offset: Offset(2, 2), // Adjust the values as needed
@@ -57,7 +61,8 @@ class _ViewFishPageState extends State<ViewFishPage> {
                   ],
                 ),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 30.0),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 15.0, horizontal: 30.0),
                   child: Column(
                     children: [
                       Center(
@@ -121,36 +126,54 @@ class _ViewFishPageState extends State<ViewFishPage> {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                              color: Color(0xff154670),
-                              borderRadius: BorderRadius.circular(100)
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
+                                color: Color(0xff154670),
+                                borderRadius: BorderRadius.circular(100)),
+                            child: const Padding(
+                              padding: EdgeInsets.all(10.0),
                               child: Center(
-                                child: FaIcon(FontAwesomeIcons.utensils, size: 14, color: Colors.white,),
+                                child: FaIcon(
+                                  FontAwesomeIcons.utensils,
+                                  size: 14,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ),
-                          SizedBox(width: 10,),
+                          const SizedBox(
+                            width: 10,
+                          ),
                           Container(
                             decoration: BoxDecoration(
-                              color: Color(0xff154670),
-                              borderRadius: BorderRadius.circular(100)
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Center(
-                                child: FaIcon(FontAwesomeIcons.heartPulse, size: 14, color: Colors.white,),
+                                color: const Color(0xff154670),
+                                borderRadius: BorderRadius.circular(100)),
+                            child: GestureDetector(
+                              onTap: () => {
+                                Navigator.push(
+                                  (context),
+                                  MaterialPageRoute(
+                                    builder: (context) => const Nutrition(),
+                                  ),
+                                )
+                              },
+                              child: const Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: Center(
+                                  child: FaIcon(
+                                    FontAwesomeIcons.heartPulse,
+                                    size: 14,
+                                    color: Colors.white,
+                                  ),
+                                ),
                               ),
                             ),
                           )
                         ],
                       ),
                       const SizedBox(height: 15),
-                      Text(
+                      const Text(
                         'Description',
-                        style:
-                            TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
                       ),
                       const SizedBox(height: 10),
                       Text(
