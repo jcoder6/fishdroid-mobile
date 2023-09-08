@@ -64,7 +64,7 @@ class HomeDrawer extends StatelessWidget {
             ListTile(
               title: Center(
                 child: Text(
-                  'Quiz',
+                  'Games',
                   style: TextStyle(
                       color: Color(0xff154670),
                       fontSize: 16,
@@ -76,7 +76,7 @@ class HomeDrawer extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => const MyHomePage(
-                            pageIndex: 5)
+                            pageIndex: 6)
                             )
                             );
               },
@@ -104,7 +104,7 @@ class HomeDrawer extends StatelessWidget {
             ListTile(
               title: Center(
                 child: Text(
-                  'Nutrition',
+                  'Fish Trivia',
                   style: TextStyle(
                       color: Color(0xff154670),
                       fontSize: 16,
@@ -116,27 +116,7 @@ class HomeDrawer extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => const MyHomePage(
-                            pageIndex: 6)
-                            )
-                            );
-              },
-            ),
-            ListTile(
-              title: Center(
-                child: Text(
-                  'Fun Facts',
-                  style: TextStyle(
-                      color: Color(0xff154670),
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const MyHomePage(
-                            pageIndex: 4)
+                            pageIndex: 5)
                             )
                             );
               },
@@ -176,7 +156,7 @@ class HomeDrawer extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => const MyHomePage(
-                            pageIndex: 8)
+                            pageIndex: 4)
                             )
                             );
               },

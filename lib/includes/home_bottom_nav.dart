@@ -41,8 +41,8 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
           backgroundColor: Colors.blue,
         ),
         BottomNavigationBarItem(
-          icon: FaIcon(FontAwesomeIcons.faceSmile, color: Color(0xff154670)),
-          label: 'Fun Facts',
+          icon: FaIcon(FontAwesomeIcons.egg, color: Color(0xff154670)),
+          label: 'Hatchery',
         ),
       ],
       onTap: (index) {
