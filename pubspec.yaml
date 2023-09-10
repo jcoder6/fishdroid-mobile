@@ -38,6 +38,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   scroll_snap_list: ^0.9.1
   video_player: ^2.7.1
+  permission_handler: ^10.0.0
+  camera: ^0.10.5+4
 
 dev_dependencies:
   flutter_test:

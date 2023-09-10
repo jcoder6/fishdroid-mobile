@@ -1,4 +1,4 @@
-import 'package:fishdroid/pages/home.dart';
+// import 'package:fishdroid/pages/home.dart';
 import 'package:fishdroid/pages/view_fish_page.dart';
 import 'package:flutter/material.dart';
 
@@ -111,66 +111,68 @@ class _FishPagesState extends State<FishPages> {
                         ),
                       );
                     },
-                    child: Container(
-                      margin: const EdgeInsets.only(bottom: 20),
-                      decoration: BoxDecoration(
-                        color: const Color(0xffC5D7F0),
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color.fromARGB(255, 107, 107, 107)
-                                .withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 3,
-                            offset: Offset(2, 2), // Adjust the values as needed
-                          ),
-                        ],
-                      ),
-                      padding: const EdgeInsets.all(15.0),
-                      child: Row(
-                        children: [
-                          Container(
-                            width: 100,
-                            height: 100,
-                            margin: const EdgeInsets.only(right: 10),
-                            // color: Colors.blueAccent,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              image: DecorationImage(
-                                  image: AssetImage(item.imgPath),
-                                  fit: BoxFit.fill),
+                    child: SingleChildScrollView(
+                      child: Container(
+                        margin: const EdgeInsets.only(bottom: 20),
+                        decoration: BoxDecoration(
+                          color: const Color(0xffC5D7F0),
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color.fromARGB(255, 107, 107, 107)
+                                  .withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 3,
+                              offset: Offset(2, 2), // Adjust the values as needed
                             ),
-                          ),
-                          Container(
-                            height: 100,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  item.fishName,
-                                  style:
-                                      const TextStyle(color: Color(0xff154670)),
-                                ),
-                                Text(
-                                  item.fishSciName,
-                                  style:
-                                      const TextStyle(color: Color(0xff154670)),
-                                ),
-                                Text(
-                                  item.fishFamName,
-                                  style:
-                                      const TextStyle(color: Color(0xff154670)),
-                                ),
-                                Text(
-                                  item.localName,
-                                  style:
-                                      const TextStyle(color: Color(0xff154670)),
-                                ),
-                              ],
+                          ],
+                        ),
+                        padding: const EdgeInsets.all(15.0),
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 100,
+                              height: 100,
+                              margin: const EdgeInsets.only(right: 10),
+                              // color: Colors.blueAccent,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                image: DecorationImage(
+                                    image: AssetImage(item.imgPath),
+                                    fit: BoxFit.fill),
+                              ),
                             ),
-                          )
-                        ],
+                            Container(
+                              height: 100,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    item.fishName,
+                                    style:
+                                        const TextStyle(color: Color(0xff154670)),
+                                  ),
+                                  Text(
+                                    item.fishSciName,
+                                    style:
+                                        const TextStyle(color: Color(0xff154670)),
+                                  ),
+                                  Text(
+                                    item.fishFamName,
+                                    style:
+                                        const TextStyle(color: Color(0xff154670)),
+                                  ),
+                                  Text(
+                                    item.localName,
+                                    style:
+                                        const TextStyle(color: Color(0xff154670)),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   );

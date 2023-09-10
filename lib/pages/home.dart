@@ -1,4 +1,5 @@
 import 'package:fishdroid/pages/app_home.dart';
+import 'package:fishdroid/pages/camera_page.dart';
 import 'package:fishdroid/pages/fish_Page.dart';
 import 'package:fishdroid/pages/hatcheries.dart';
 import 'package:fishdroid/pages/recipes.dart';
@@ -16,6 +17,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  // ignore: unused_field
   int _currentIndex = 0;
 
   void _onTabSelected(int index) {
@@ -29,7 +31,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final tabs = [
     const AppHome(),
     const FishPages(),
-    Center(child: Text('Camera')),
+    const CameraPage(),
     const Recipes(),
     const Hatcheries(),
     Center(child: Text('Fish Trivia')),
