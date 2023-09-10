@@ -1,11 +1,16 @@
 // import 'package:fishdroid/pages/home.dart';
+import 'package:camera/camera.dart';
 import 'package:fishdroid/includes/splash.dart';
 // import 'package:fishdroid/pages/nutrition.dart';
 // import 'package:fishdroid/pages/view_fish_page.dart';
 // import 'package:fishdroid/pages/view_hatching_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+List<CameraDescription> ? cameras;
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  cameras = await availableCameras();
   runApp(const MyApp());
 }
 
@@ -15,7 +20,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
