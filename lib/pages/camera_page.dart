@@ -40,8 +40,8 @@ class _CameraPageState extends State<CameraPage> {
 
   loadModel() async {
     await Tflite.loadModel(
-      model: "assets/model.tflite",
-      labels: "assets/labels.txt",
+      model: "assets/fish_model/model_unquant.tflite",
+      labels: "assets/fish_model/labels.txt",
     );
   }
 
