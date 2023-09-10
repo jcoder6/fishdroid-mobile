@@ -38,8 +38,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   scroll_snap_list: ^0.9.1
   video_player: ^2.7.1
-  permission_handler: ^10.0.0
+  get: ^4.6.6
   camera: ^0.10.5+4
+  flutter_tflite: ^1.0.1
 
 dev_dependencies:
   flutter_test:
@@ -80,6 +81,10 @@ flutter:
     - images/recipes/RECIPE_IMG_003.jpeg
     - images/recipes/RECIPE_IMG_004.jpg
     - assets/videos/HATCH_VIDEO_001.mp4
+    - assets/labels.txt
+    - assets/model.tflite
+    - assets/frame.jpg
+    - assets/back.jpg
 
   # example:
   # fonts:

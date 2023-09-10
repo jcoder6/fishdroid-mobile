@@ -54,7 +54,7 @@ class _FishPagesState extends State<FishPages> {
               stops: [0, 1],
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
-            )),
+            ),),
             child: Padding(
               padding: const EdgeInsets.all(25.0),
               child: Column(
@@ -111,7 +111,7 @@ class _FishPagesState extends State<FishPages> {
                         ),
                       );
                     },
-                    child: SingleChildScrollView(
+                    child: Center(
                       child: Container(
                         margin: const EdgeInsets.only(bottom: 20),
                         decoration: BoxDecoration(
