@@ -27,7 +27,7 @@ class HomeDrawer extends StatelessWidget {
                     height: 100,
                     width: 100,
                   ),
-                  Text(
+                  const Text(
                     'Fishdroid 2.0',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -38,11 +38,11 @@ class HomeDrawer extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             ListTile(
-              title: Center(
+              title:const Center(
                 child: Text(
                   'Fish',
                   style: TextStyle(
@@ -62,7 +62,7 @@ class HomeDrawer extends StatelessWidget {
               },
             ),
             ListTile(
-              title: Center(
+              title: const Center(
                 child: Text(
                   'Games',
                   style: TextStyle(
@@ -82,7 +82,7 @@ class HomeDrawer extends StatelessWidget {
               },
             ),
             ListTile(
-              title: Center(
+              title: const Center(
                 child: Text(
                   'Recipe',
                   style: TextStyle(
@@ -102,7 +102,7 @@ class HomeDrawer extends StatelessWidget {
               },
             ),
             ListTile(
-              title: Center(
+              title: const Center(
                 child: Text(
                   'Fish Trivia',
                   style: TextStyle(
@@ -122,7 +122,7 @@ class HomeDrawer extends StatelessWidget {
               },
             ),
             ListTile(
-              title: Center(
+              title: const Center(
                 child: Text(
                   'Terminologies',
                   style: TextStyle(
@@ -142,7 +142,7 @@ class HomeDrawer extends StatelessWidget {
               },
             ),
             ListTile(
-              title: Center(
+              title: const Center(
                 child: Text(
                   'Hatchery',
                   style: TextStyle(
@@ -157,6 +157,26 @@ class HomeDrawer extends StatelessWidget {
                     MaterialPageRoute(
                         builder: (context) => const MyHomePage(
                             pageIndex: 4)
+                            )
+                            );
+              },
+            ),
+            ListTile(
+              title: const Center(
+                child: Text(
+                  'Message Us',
+                  style: TextStyle(
+                      color: Color(0xff154670),
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const MyHomePage(
+                            pageIndex: 8)
                             )
                             );
               },
