@@ -98,92 +98,94 @@ class _CameraPageState extends State<CameraPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Color.fromARGB(255, 158, 212, 253), Color(0xff0c82df)],
-            stops: [0, 1],
-            begin: Alignment.bottomCenter,
-            end: Alignment.topCenter,
+      body: SingleChildScrollView(
+        child: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color.fromARGB(255, 158, 212, 253), Color(0xff0c82df)],
+              stops: [0, 1],
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter,
+            ),
           ),
-        ),
-        child: Column(
-          children: [
-            Stack(
-              children: [
-                Center(
-                  child: Container(
-                    height: 500,
-                    width: MediaQuery.of(context).size.width - 50,
-                    color: const Color.fromARGB(255, 6, 19, 41),
-                  ),
-                ),
-                Center(
-                  child: TextButton(
-                    onPressed: () {
-                      initCamera();
-                    },
+          child: Column(
+            children: [
+              Stack(
+                children: [
+                  Center(
                     child: Container(
-                      margin: EdgeInsets.only(top: 20),
                       height: 500,
                       width: MediaQuery.of(context).size.width - 50,
-                      child: imgCamera == null
-                          ? Container(
-                              height: 500,
-                              width: MediaQuery.of(context).size.width - 50,
-                              child: Center(
-                                child: FaIcon(
-                                  FontAwesomeIcons.camera,
-                                  size: 50,
-                                ),
-                              ))
-                          : cameraController != null &&
-                                  cameraController!.value.isInitialized
-                              ? AspectRatio(
-                                  aspectRatio:
-                                      cameraController!.value.aspectRatio,
-                                  child: CameraPreview(cameraController!),
-                                )
-                              : Container(),
+                      color: const Color.fromARGB(255, 6, 19, 41),
                     ),
                   ),
-                ),
-              ],
-            ),
-            Center(
-              child: Container(
-                margin: const EdgeInsets.only(top: 10),
-                width: MediaQuery.of(context).size.width - 50,
-                height: 150,
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: const Color(0xffC5D7F0),
-                  boxShadow: [
-                    BoxShadow(
-                      color:
-                          Color.fromARGB(255, 107, 107, 107).withOpacity(0.5),
-                      spreadRadius: 2,
-                      blurRadius: 3,
-                      offset: Offset(2, 2), // Adjust the values as needed
-                    ),
-                  ],
-                ),
-                child: Center(
-                  child: SingleChildScrollView(
-                    child: Text(
-                      result,
-                      style: const TextStyle(
-                        backgroundColor: Colors.white54,
-                        color: Color(0xff154670),
-                        fontSize: 25,
+                  Center(
+                    child: TextButton(
+                      onPressed: () {
+                        initCamera();
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(top: 20),
+                        height: 500,
+                        width: MediaQuery.of(context).size.width - 50,
+                        child: imgCamera == null
+                            ? Container(
+                                height: 500,
+                                width: MediaQuery.of(context).size.width - 50,
+                                child: Center(
+                                  child: FaIcon(
+                                    FontAwesomeIcons.camera,
+                                    size: 50,
+                                  ),
+                                ))
+                            : cameraController != null &&
+                                    cameraController!.value.isInitialized
+                                ? AspectRatio(
+                                    aspectRatio:
+                                        cameraController!.value.aspectRatio,
+                                    child: CameraPreview(cameraController!),
+                                  )
+                                : Container(),
                       ),
-                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
+              ),
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.only(top: 10),
+                  width: MediaQuery.of(context).size.width - 50,
+                  height: 150,
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: const Color(0xffC5D7F0),
+                    boxShadow: [
+                      BoxShadow(
+                        color:
+                            Color.fromARGB(255, 107, 107, 107).withOpacity(0.5),
+                        spreadRadius: 2,
+                        blurRadius: 3,
+                        offset: Offset(2, 2), // Adjust the values as needed
+                      ),
+                    ],
+                  ),
+                  child: Center(
+                    child: SingleChildScrollView(
+                      child: Text(
+                        result,
+                        style: const TextStyle(
+                          backgroundColor: Colors.white54,
+                          color: Color(0xff154670),
+                          fontSize: 25,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

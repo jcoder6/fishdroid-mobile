@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fishdroid/pages/home.dart';
+
 // import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -8,10 +10,10 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Color(0xff0c82df),
+      backgroundColor: const Color(0xff0c82df),
       elevation: 0,
       title: Container(
-        margin: EdgeInsets.only(top: 10),
+        margin: const EdgeInsets.only(top: 10),
         transform: Matrix4.translationValues(-25.0, 0.0, 0.0),
         child: Row(
           children: [
@@ -25,8 +27,17 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             Container(
               transform: Matrix4.translationValues(30.0, -4.0, 0.0),
               child: IconButton(
-                onPressed: () => {},
-                icon: Icon(Icons.search),
+                onPressed: () => {
+                  Navigator.push(
+                    (context),
+                    MaterialPageRoute(
+                      builder: (context) => const MyHomePage(
+                        pageIndex: 9,
+                      ),
+                    ),
+                  )
+                },
+                icon: const Icon(Icons.search),
               ),
             ),
           ],

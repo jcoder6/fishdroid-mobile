@@ -65,7 +65,7 @@ class _ViewFishPageState extends State<ViewFishPage> {
                       EdgeInsets.symmetric(vertical: 15.0, horizontal: 30.0),
                   child: Column(
                     children: [
-                      Center(
+                      const Center(
                         child: Text(
                           'Smalltoothed Ponyfish',
                           style: TextStyle(
@@ -73,7 +73,7 @@ class _ViewFishPageState extends State<ViewFishPage> {
                         ),
                       ),
                       const SizedBox(height: 15),
-                      Row(
+                      const Row(
                         children: [
                           Text(
                             'Scientific Name: ',
@@ -89,7 +89,7 @@ class _ViewFishPageState extends State<ViewFishPage> {
                         ],
                       ),
                       const SizedBox(height: 10),
-                      Row(
+                      const Row(
                         children: [
                           Text(
                             'Family Name: ',
@@ -105,7 +105,7 @@ class _ViewFishPageState extends State<ViewFishPage> {
                         ],
                       ),
                       const SizedBox(height: 10),
-                      Row(
+                      const Row(
                         children: [
                           Text(
                             'Local Name: ',
@@ -176,7 +176,7 @@ class _ViewFishPageState extends State<ViewFishPage> {
                             fontWeight: FontWeight.bold, fontSize: 16),
                       ),
                       const SizedBox(height: 10),
-                      Text(
+                      const Text(
                         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula ante eu purus bibendum, at fermentum libero efficitur. Cras ut quam euismod, vulputate nunc sed, fringilla quam. Integer vestibulum mi at neque cursus, id bibendum orci laoreet',
                         style: TextStyle(fontSize: 16, height: 2),
                       )

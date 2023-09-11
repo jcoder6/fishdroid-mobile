@@ -4,6 +4,7 @@ import 'package:fishdroid/pages/fish_Page.dart';
 import 'package:fishdroid/pages/hatcheries.dart';
 import 'package:fishdroid/pages/message.dart';
 import 'package:fishdroid/pages/recipes.dart';
+import 'package:fishdroid/pages/search_page.dart';
 import 'package:flutter/material.dart';
 import '../includes/home_app_bar.dart';
 import '../includes/home_bottom_nav.dart';
@@ -39,6 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Center(child: Text('Quizzes')),
     Center(child: Text('Terminologies')),
     const MessagePage(),
+    const SearchPage(),
   ];
 
   @override
