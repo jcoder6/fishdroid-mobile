@@ -1,6 +1,6 @@
-import 'package:fishdroid/data/hatchery_data.dart';
+// import 'package:fishdroid/data/hatchery_data.dart';
 import 'package:fishdroid/data/term.dart';
-import 'package:fishdroid/pages/view_hatching_page.dart';
+// import 'package:fishdroid/pages/view_hatching_page.dart';
 import 'package:fishdroid/pages/view_term_page.dart';
 import 'package:flutter/material.dart';
 

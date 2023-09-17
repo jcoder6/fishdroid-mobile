@@ -1,7 +1,7 @@
 import 'package:fishdroid/includes/below_links.dart';
 import 'package:fishdroid/pages/view_recipe_page.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
 import 'package:fishdroid/data/recipe_data.dart';
 
