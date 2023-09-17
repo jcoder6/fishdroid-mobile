@@ -89,6 +89,7 @@ flutter:
     - assets/fish_model/labels.txt
     - assets/triviabg.jpg
     - assets/goldfish.jpg
+    - assets/eggcollection.jpg
 
   # example:
   # fonts:

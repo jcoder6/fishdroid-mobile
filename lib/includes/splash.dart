@@ -1,6 +1,6 @@
 import 'package:fishdroid/pages/trivia.dart';
 import 'package:flutter/material.dart';
-import '../pages/home.dart';
+// import '../pages/home.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
