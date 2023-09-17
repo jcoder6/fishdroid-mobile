@@ -5,6 +5,7 @@ import 'package:fishdroid/pages/hatcheries.dart';
 import 'package:fishdroid/pages/message.dart';
 import 'package:fishdroid/pages/recipes.dart';
 import 'package:fishdroid/pages/search_page.dart';
+import 'package:fishdroid/pages/terminology.dart';
 import 'package:flutter/material.dart';
 import '../includes/home_app_bar.dart';
 import '../includes/home_bottom_nav.dart';
@@ -36,9 +37,9 @@ class _MyHomePageState extends State<MyHomePage> {
     const CameraPage(),
     const Recipes(),
     const Hatcheries(),
-    Center(child: Text('Fish Trivia')),
+    const Center(child: Text('Fish Trivia')),
     Center(child: Text('Quizzes')),
-    Center(child: Text('Terminologies')),
+    const Termniology(),
     const MessagePage(),
     const SearchPage(),
   ];

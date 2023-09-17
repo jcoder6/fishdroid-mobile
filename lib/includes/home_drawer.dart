@@ -101,26 +101,7 @@ class HomeDrawer extends StatelessWidget {
                             );
               },
             ),
-            ListTile(
-              title: const Center(
-                child: Text(
-                  'Fish Trivia',
-                  style: TextStyle(
-                      color: Color(0xff154670),
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const MyHomePage(
-                            pageIndex: 5)
-                            )
-                            );
-              },
-            ),
+            
             ListTile(
               title: const Center(
                 child: Text(
