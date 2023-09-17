@@ -1,3 +1,4 @@
+import 'package:fishdroid/pages/trivia.dart';
 import 'package:flutter/material.dart';
 import '../pages/home.dart';
 
@@ -18,10 +19,11 @@ class _SplashState extends State<Splash> {
   _navigateToHome() async {
     await Future.delayed(Duration(milliseconds: 2000), () {});
     Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-            builder: (context) =>
-                MyHomePage(pageIndex: 0)));
+      context,
+      MaterialPageRoute(
+        builder: (context) => Trivia(),
+      ),
+    );
   }
 
   @override
