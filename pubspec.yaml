@@ -87,6 +87,8 @@ flutter:
     - assets/back.jpg
     - assets/fish_model/model_unquant.tflite
     - assets/fish_model/labels.txt
+    - assets/triviabg.jpg
+    - assets/goldfish.jpg
 
   # example:
   # fonts:
