@@ -54,12 +54,17 @@ class _RecipesState extends State<Recipes> {
             transform:
                 Matrix4.translationValues(0, -appBar.preferredSize.height, 0),
             decoration: const BoxDecoration(
-                gradient: LinearGradient(
-              colors: [Color.fromARGB(255, 158, 212, 253), Color(0xff0c82df)],
-              stops: [0, 1],
-              begin: Alignment.bottomCenter,
-              end: Alignment.topCenter,
-            )),
+              image: DecorationImage(
+                image: AssetImage('images/img-bg-design/bg-food.jpg'),
+                fit: BoxFit.fill,
+              ),
+              // gradient: LinearGradient(
+              //   colors: [Color.fromARGB(255, 158, 212, 253), Color(0xff0c82df)],
+              //   stops: [0, 1],
+              //   begin: Alignment.bottomCenter,
+              //   end: Alignment.topCenter,
+              // ),
+            ),
             child: Padding(
               padding: const EdgeInsets.all(25.0),
               child: Column(
@@ -71,7 +76,7 @@ class _RecipesState extends State<Recipes> {
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xff154670),
+                      color: Color(0xffffe81e),
                     ),
                   ),
                   Text(
@@ -96,7 +101,7 @@ class _RecipesState extends State<Recipes> {
           ),
           Container(
             height: 250,
-            transform: Matrix4.translationValues(0, -150, 0),
+            transform: Matrix4.translationValues(0, -120, 0),
             // width: 170,
             // decoration: BoxDecoration(
             //   borderRadius: BorderRadius.circular(10),

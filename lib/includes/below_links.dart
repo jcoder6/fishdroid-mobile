@@ -1,3 +1,4 @@
+import 'package:fishdroid/pages/game.dart';
 import 'package:fishdroid/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -91,7 +92,7 @@ class BelowLinks extends StatelessWidget {
                     Navigator.push(
                       (context),
                       MaterialPageRoute(
-                        builder: (context) => MyHomePage(pageIndex: 6),
+                        builder: (context) => const Game(),
                       ),
                     );
                   },

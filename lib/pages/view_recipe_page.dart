@@ -16,6 +16,7 @@ class ViewRecipePage extends StatefulWidget {
 class _ViewRecipePageState extends State<ViewRecipePage> {
   @override
   Widget build(BuildContext context) {
+    var appBar = AppBar();
     return Scaffold(
         backgroundColor: const Color.fromARGB(255, 238, 238, 238),
         appBar: HomeAppBar(),
@@ -24,9 +25,63 @@ class _ViewRecipePageState extends State<ViewRecipePage> {
           child: Column(
             children: [
               Container(
+                width: MediaQuery.of(context).size.width,
+                height: (MediaQuery.of(context).size.height -
+                        appBar.preferredSize.height) /
+                    2,
+                // transform:
+                //     Matrix4.translationValues(0, -appBar.preferredSize.height, 0),
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('images/img-bg-design/bg-recipe.jpg'),
+                    fit: BoxFit.fill,
+                  ),
+                  // gradient: LinearGradient(
+                  //   colors: [Color.fromARGB(255, 158, 212, 253), Color(0xff0c82df)],
+                  //   stops: [0, 1],
+                  //   begin: Alignment.bottomCenter,
+                  //   end: Alignment.topCenter,
+                  // ),
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.all(25.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Foods that',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xffffe81e),
+                        ),
+                      ),
+                      Text(
+                        'Fuels Your Soul',
+                        style: TextStyle(
+                          fontSize: 30,
+                          color: Color.fromARGB(255, 255, 255, 255),
+                          fontWeight: FontWeight.bold,
+                          shadows: [
+                            Shadow(
+                              blurRadius: 20.0, // shadow blur
+                              color: Color.fromARGB(115, 0, 0, 0), // shadow color
+                              offset: Offset(
+                                  -1.0, -1.0), // how much shadow will be shown
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              Container(
                 //FISH IMAGE CONTAINER
                 height: 200,
-                width: MediaQuery.of(context).size.width,
+                transform: Matrix4.translationValues(0, -90, 0),
+                width: MediaQuery.of(context).size.width - 70,
                 margin: EdgeInsets.all(20),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
@@ -46,8 +101,9 @@ class _ViewRecipePageState extends State<ViewRecipePage> {
               ),
               Container(
                 //FISH INFORMATION CONTAINER
+                transform: Matrix4.translationValues(0, -90, 0),
                 margin: EdgeInsets.symmetric(horizontal: 20),
-                width: MediaQuery.of(context).size.width,
+                width: MediaQuery.of(context).size.width - 70,
                 decoration: BoxDecoration(
                   color: Color(0xffC5D7F0),
                   borderRadius: BorderRadius.circular(10),
