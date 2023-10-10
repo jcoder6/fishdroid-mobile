@@ -90,6 +90,12 @@ flutter:
     - assets/triviabg.jpg
     - assets/goldfish.jpg
     - assets/eggcollection.jpg
+    - images/img-bg-design/bg-feature.jpg
+    - images/img-bg-design/bg-fish.jpg
+    - images/img-bg-design/bg-food.jpg
+    - images/img-bg-design/bg-nutrients.jpg
+    - images/img-bg-design/bg-recipe.jpg
+    - images/img-bg-design/bg-term.jpg
 
   # example:
   # fonts:

@@ -11,7 +11,7 @@ class Trivia extends StatelessWidget {
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage('assets/triviabg.jpg'), fit: BoxFit.fill),
         ),
@@ -21,8 +21,8 @@ class Trivia extends StatelessWidget {
           children: [
             Container(
               width: MediaQuery.of(context).size.width - 50,
-              height: MediaQuery.of(context).size.height - 200,
-              padding: EdgeInsets.all(20),
+              height: MediaQuery.of(context).size.height - 100,
+              padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 color: const Color(0xffC5D7F0),
                 borderRadius: BorderRadius.circular(15),
@@ -49,7 +49,7 @@ class Trivia extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   Text(
@@ -83,13 +83,13 @@ class Trivia extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Text(
                     'Goldfish have a memory span that lasts for months, not just a few seconds. They can even recognize their owners and learn simple tricks.',
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 16,
                       height: 2,
                       color: Color(0xff154670),
                     ),
@@ -103,7 +103,7 @@ class Trivia extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (builder) => MyHomePage(pageIndex: 0),
+                            builder: (builder) => const MyHomePage(pageIndex: 0),
                           ),
                         );
                       },

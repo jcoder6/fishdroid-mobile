@@ -1,7 +1,6 @@
 import 'package:fishdroid/includes/home_app_bar.dart';
 import 'package:fishdroid/includes/home_drawer.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:video_player/video_player.dart';
 
 class ViewHatcingPage extends StatefulWidget {
