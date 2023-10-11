@@ -1,7 +1,7 @@
 import 'package:fishdroid/pages/app_home.dart';
 import 'package:fishdroid/pages/camera_page.dart';
 import 'package:fishdroid/pages/fish_Page.dart';
-import 'package:fishdroid/pages/game.dart';
+import 'package:fishdroid/pages/game/game.dart';
 import 'package:fishdroid/pages/hatcheries.dart';
 import 'package:fishdroid/pages/message.dart';
 import 'package:fishdroid/pages/recipes.dart';
