@@ -6,6 +6,7 @@ Widget hiddenLetter(String char, bool visible) {
     alignment: Alignment.center,
     height: 50,
     width: 50,
+    margin: const EdgeInsets.only(left: 5),
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(
         12.0,

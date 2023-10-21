@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fishdroid/pages/home.dart';
 
 // import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -22,23 +21,6 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
               height: 65,
               width: 65,
               fit: BoxFit.cover,
-            ),
-            const Spacer(),
-            Container(
-              transform: Matrix4.translationValues(30.0, -4.0, 0.0),
-              child: IconButton(
-                onPressed: () => {
-                  Navigator.push(
-                    (context),
-                    MaterialPageRoute(
-                      builder: (context) => const MyHomePage(
-                        pageIndex: 9,
-                      ),
-                    ),
-                  )
-                },
-                icon: const Icon(Icons.search),
-              ),
             ),
           ],
         ),

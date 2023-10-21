@@ -8,7 +8,7 @@ class HomeDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: Container(
-        color: Color(0xffC5D7F0),
+        color: const Color(0xffC5D7F0),
         child: ListView(
           children: [
             DrawerHeader(
@@ -16,7 +16,7 @@ class HomeDrawer extends StatelessWidget {
                 border: Border(
                   bottom: Divider.createBorderSide(
                     context,
-                    color: Color(0xff154670),
+                    color: const Color(0xff154670),
                   ),
                 ),
               ),
@@ -40,6 +40,26 @@ class HomeDrawer extends StatelessWidget {
             ),
             const SizedBox(
               height: 30,
+            ),
+            ListTile(
+              title:const Center(
+                child: Text(
+                  'Search',
+                  style: TextStyle(
+                      color: Color(0xff154670),
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const MyHomePage(
+                            pageIndex: 9)
+                            )
+                            );
+              },
             ),
             ListTile(
               title:const Center(
