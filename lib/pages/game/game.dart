@@ -8,7 +8,7 @@ class Game extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
+      theme: ThemeData.fallback(),
       home: const GameScreen(),
     );
   }

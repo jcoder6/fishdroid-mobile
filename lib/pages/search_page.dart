@@ -1,4 +1,6 @@
 import 'package:fishdroid/data/fishes.dart';
+import 'package:fishdroid/services/remote_services.dart';
+import 'package:fishdroid/widgets/fish_item_builder.dart';
 // import 'package:fishdroid/widgets/fish_item_builder.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +13,23 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   List<Fish>? fishesList;
+  var isLoaded = false;
+  TextEditingController searchController = TextEditingController();
+  
+  getSearch(input) async {
+    fishesList = await RemoteService().searchFish(input);
+
+    if(fishesList != null) {
+      isLoaded = true;
+    }
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    searchController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -22,6 +41,7 @@ class _SearchPageState extends State<SearchPage> {
             // mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextField(
+                controller: searchController,
                 decoration: InputDecoration(
                   hintText: 'Search...',
                   suffixIcon: IconButton(
@@ -29,7 +49,10 @@ class _SearchPageState extends State<SearchPage> {
                     onPressed: () {
                       // Perform the search here
                       // You can add your search logic here
-                      print('nag serch yarn ng fish?');
+                      String searchInput = searchController.text;
+                      setState(() {
+                        getSearch(searchInput);
+                      });
                     },
                   ),
                 ),
@@ -40,15 +63,21 @@ class _SearchPageState extends State<SearchPage> {
                   right: 20,
                   left: 20,
                 ),
-                child: ListView.builder(
-                  shrinkWrap: true, // Adjusts the height based on the content
-                  itemCount: fishesList?.length, // Replace with the actual number of items in your list
-                  itemBuilder: (BuildContext context, int index) {
-                    // var item = fishesList![index];
-                    // return FishListItem(item);
-                    return const Text('1');
-                  },
-                ),
+                child: (fishesList == null) 
+                          ? const Center(child: Text('Search Fish'),)
+                          : (!isLoaded) 
+                              ? const Center(child: CircularProgressIndicator(),)
+                              : (fishesList!.isEmpty) 
+                                    ? const Center(child: Text('No Fish Found'),)
+                                    : ListView.builder(
+                                        shrinkWrap: true, // Adjusts the height based on the content
+                                        itemCount: fishesList?.length, // Replace with the actual number of items in your list
+                                        itemBuilder: (BuildContext context, int index) {
+                                          var item = fishesList![index];
+                                          return FishListItem(item);
+                                        },
+                                      )
+                    
               ),
     
               // You can add other content below the search field if needed

@@ -13,10 +13,10 @@ class GameScreen extends StatefulWidget {
   State<GameScreen> createState() => _GameScreenState();
 }
 
-var word = "jomer".toUpperCase();
+var word = "Goldy".toUpperCase();
 
 class _GameScreenState extends State<GameScreen> {
-  var characters = "abcdefghijklmnopqrstuvwxyz".toUpperCase();
+  var characters = "abcdefghijklmnopqrstuvwxyz ".toUpperCase();
   List<String> userGuess = [];
   List<String> selectedChar = [];
   var tries = 0;
@@ -26,6 +26,7 @@ class _GameScreenState extends State<GameScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black87,
       appBar: AppBar(
         title: Container(
           child: Row(
@@ -156,7 +157,7 @@ class _GameScreenState extends State<GameScreen> {
                       Expanded(
                         child: Container(
                           child: Text(
-                            'What is the name of this fucking fish',
+                            'What is the name of this fish',
                             style: TextStyle(fontSize: 18),
                           ),
                         ),
@@ -168,13 +169,19 @@ class _GameScreenState extends State<GameScreen> {
                 Expanded(
                   child: Container(
                     padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: word
-                          .split("")
-                          .map((e) => hiddenLetter(
-                              e, !selectedChar.contains(e.toUpperCase())))
-                          .toList(),
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: word
+                            .split("")
+                            .map((e) => hiddenLetter(
+                                  (e != ' ') ? e : '_', 
+                                  !selectedChar.contains(e.toUpperCase())
+                                ))
+                            .toList(),
+                        
+                      ),
                     ),
                   ),
                 ),
@@ -232,7 +239,7 @@ class _GameScreenState extends State<GameScreen> {
                       backgroundColor: Colors.black54,
                     ),
                     child: Text(
-                      e,
+                      (e != ' ') ? e : '_',
                       style: const TextStyle(
                           fontSize: 22, fontWeight: FontWeight.bold),
                     ),
