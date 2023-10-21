@@ -187,7 +187,7 @@ class _GameScreenState extends State<GameScreen> {
               padding: const EdgeInsets.all(8.0),
               child: GridView.count(
                 physics: const NeverScrollableScrollPhysics(),
-                crossAxisCount: 6,
+                crossAxisCount: 7,
                 crossAxisSpacing: 4,
                 mainAxisSpacing: 4,
                 children: characters.split('').map((e) {

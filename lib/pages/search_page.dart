@@ -1,5 +1,5 @@
 import 'package:fishdroid/data/fishes.dart';
-import 'package:fishdroid/widgets/fish_item_builder.dart';
+// import 'package:fishdroid/widgets/fish_item_builder.dart';
 import 'package:flutter/material.dart';
 
 class SearchPage extends StatefulWidget {
@@ -10,14 +10,7 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
-  List<Fish> fishesList = [
-    Fish('images/fishes/1.jpg', 'Needlescaled Queenfish', 'Tulong-Tulong', 1,
-        'Scomberoides tol', 'Carangidae', 'Some Description'),
-    Fish('images/fishes/2.jpg', 'Malabar trevally', 'Talakitok', 2,
-        'Carangoides malabaricus', 'Carangidae', 'Some Description'),
-    Fish('images/fishes/3.jpg', 'Shortfin scad', 'Galonggong', 3,
-        'Decapterus macrosoma', 'Carangidae', 'Some Description'),
-  ];
+  List<Fish>? fishesList;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -49,11 +42,11 @@ class _SearchPageState extends State<SearchPage> {
                 ),
                 child: ListView.builder(
                   shrinkWrap: true, // Adjusts the height based on the content
-                  itemCount: fishesList
-                      .length, // Replace with the actual number of items in your list
+                  itemCount: fishesList?.length, // Replace with the actual number of items in your list
                   itemBuilder: (BuildContext context, int index) {
-                    var item = fishesList[index];
-                    return FishListItem(item);
+                    // var item = fishesList![index];
+                    // return FishListItem(item);
+                    return const Text('1');
                   },
                 ),
               ),
