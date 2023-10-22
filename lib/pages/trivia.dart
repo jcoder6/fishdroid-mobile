@@ -52,7 +52,7 @@ class Trivia extends StatelessWidget {
                   const SizedBox(
                     height: 30,
                   ),
-                  Text(
+                  const Text(
                     'Did you know:',
                     style: TextStyle(
                       fontSize: 20,
@@ -60,7 +60,7 @@ class Trivia extends StatelessWidget {
                       color: Color(0xff154670),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Container(

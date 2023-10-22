@@ -1,5 +1,6 @@
 import 'package:fishdroid/includes/extension.dart';
 import 'package:fishdroid/data/fishes.dart';
+import 'package:fishdroid/pages/fish_recipe_list.dart';
 import 'package:fishdroid/pages/nutrition.dart';
 import 'package:fishdroid/services/remote_services.dart';
 import 'package:flutter/material.dart';
@@ -52,6 +53,15 @@ class _ViewFishPageState extends State<ViewFishPage> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
+                    const Center(
+                      child: Text(
+                        'View Fish',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25,
+                            color: Color(0xff154670),),
+                      ),
+                    ),
                     Container(
                       //FISH IMAGE CONTAINER
                       height: 200,
@@ -153,13 +163,21 @@ class _ViewFishPageState extends State<ViewFishPage> {
                                   decoration: BoxDecoration(
                                       color: const Color(0xff154670),
                                       borderRadius: BorderRadius.circular(100)),
-                                  child: const Padding(
-                                    padding: EdgeInsets.all(10.0),
-                                    child: Center(
-                                      child: FaIcon(
-                                        FontAwesomeIcons.utensils,
-                                        size: 14,
-                                        color: Colors.white,
+                                  child: GestureDetector(
+                                    onTap: () => {
+                                      Navigator.push(
+                                          (context),
+                                          MaterialPageRoute(builder: (context) => FishRecipeList(currFish.id.toString()))
+                                        )
+                                    },
+                                    child: const Padding(
+                                      padding: EdgeInsets.all(10.0),
+                                      child: Center(
+                                        child: FaIcon(
+                                          FontAwesomeIcons.utensils,
+                                          size: 14,
+                                          color: Colors.white,
+                                        ),
                                       ),
                                     ),
                                   ),
