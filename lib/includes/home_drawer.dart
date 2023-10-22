@@ -1,3 +1,4 @@
+import 'package:fishdroid/pages/game/game.dart';
 import 'package:fishdroid/pages/home.dart';
 import 'package:flutter/material.dart';
 
@@ -95,8 +96,7 @@ class HomeDrawer extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const MyHomePage(
-                            pageIndex: 6)
+                        builder: (context) => const Game()
                             )
                             );
               },
