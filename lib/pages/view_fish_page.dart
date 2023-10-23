@@ -194,7 +194,7 @@ class _ViewFishPageState extends State<ViewFishPage> {
                                       Navigator.push(
                                         (context),
                                         MaterialPageRoute(
-                                          builder: (context) => const Nutrition(),
+                                          builder: (context) => Nutrition(currFish.id.toString()),
                                         ),
                                       )
                                     },

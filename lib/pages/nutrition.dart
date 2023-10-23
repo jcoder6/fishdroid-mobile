@@ -1,12 +1,57 @@
+import 'package:fishdroid/data/fishes.dart';
+import 'package:fishdroid/services/remote_services.dart';
+import 'package:fishdroid/data/nutrition_data.dart';
 import 'package:flutter/material.dart';
 import '../includes/home_app_bar.dart';
 import '../includes/home_drawer.dart';
 
-class Nutrition extends StatelessWidget {
-  const Nutrition({super.key});
+class Nutrition extends StatefulWidget {
+  final String fishID;
+  const Nutrition(this.fishID, {super.key});
+
+  @override
+  State<Nutrition> createState() => _NutritionState();
+}
+
+class _NutritionState extends State<Nutrition> {
+  List<NutriList>? nutritionList;
+  List<Fish>? fish;
+  var isLoaded = false;
+  var imgFishLink =
+      'https://raw.githubusercontent.com/jcoder6/fishdroid_local/master/public/assets/images/fish_images/';
+
+  @override
+  void initState() {
+    super.initState();
+    getCurrentFish();
+    getNutrientList();
+  }
+
+  getCurrentFish() async {
+    fish = await RemoteService().getOneFish(widget.fishID);
+    if (fish != null) {
+      setState(() {
+        isLoaded = true;
+      });
+    }
+  }
+
+  getNutrientList() async {
+    nutritionList = await RemoteService().getNutritions(widget.fishID);
+    if (nutritionList != null) {
+      setState(() {
+        isLoaded = true;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    if (fish == null || nutritionList == null) {
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
+    }
     var appBar = AppBar();
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 238, 238, 238),
@@ -37,12 +82,12 @@ class Nutrition extends StatelessWidget {
                   //   end: Alignment.topCenter,
                   // ),
                   ),
-              child: Padding(
-                padding: const EdgeInsets.all(25.0),
+              child: const Padding(
+                padding: EdgeInsets.all(25.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     Text(
                       'Know your',
                       style: TextStyle(
@@ -74,13 +119,14 @@ class Nutrition extends StatelessWidget {
             Container(
               width: MediaQuery.of(context).size.width - 80,
               transform: Matrix4.translationValues(0, -150, 0),
-              padding: EdgeInsets.all(15),
+              padding: const EdgeInsets.all(15),
               decoration: BoxDecoration(
                 color: const Color(0xffC5D7F0),
                 borderRadius: BorderRadius.circular(15),
                 boxShadow: [
                   BoxShadow(
-                    color: Color.fromARGB(255, 107, 107, 107).withOpacity(0.5),
+                    color: const Color.fromARGB(255, 107, 107, 107)
+                        .withOpacity(0.5),
                     spreadRadius: 2,
                     blurRadius: 3,
                     offset: Offset(2, -2), // Adjust the values as needed
@@ -97,17 +143,17 @@ class Nutrition extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Milkfish',
-                            style: TextStyle(
+                            fish![0].fishName,
+                            style: const TextStyle(
                               color: Color(0xff154670),
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 15,
                           ),
-                          Text(
+                          const Text(
                             'Scientific Name:',
                             style: TextStyle(
                               color: Color(0xff154670),
@@ -115,17 +161,17 @@ class Nutrition extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            'Chanos chanos',
-                            style: TextStyle(
+                            fish![0].scientificName,
+                            style: const TextStyle(
                               color: Color(0xff154670),
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 5,
                           ),
-                          Text(
+                          const Text(
                             'Local Name:',
                             style: TextStyle(
                               color: Color(0xff154670),
@@ -133,8 +179,8 @@ class Nutrition extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            'Bangus',
-                            style: TextStyle(
+                            fish![0].localName,
+                            style: const TextStyle(
                               color: Color(0xff154670),
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
@@ -159,25 +205,26 @@ class Nutrition extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.blueGrey,
                           image: DecorationImage(
-                              image: AssetImage('images/fishes/1.jpg'),
+                              image: NetworkImage(
+                                  imgFishLink + fish![0].fishImage),
                               fit: BoxFit.fill),
                         ),
                       )
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.all(15),
+                    padding: const EdgeInsets.all(15),
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10)),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           'Nutrients',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -186,58 +233,28 @@ class Nutrition extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.all(20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Omega-3 Fatty Acids',
-                                style: TextStyle(
-                                    fontSize: 16, color: Color(0xff154670)),
-                              ),
-                              SizedBox(
-                                height: 15,
-                              ),
-                              Text(
-                                'High Qaulity of Protein',
-                                style: TextStyle(
-                                    fontSize: 16, color: Color(0xff154670)),
-                              ),
-                              SizedBox(
-                                height: 15,
-                              ),
-                              Text(
-                                'Vitamin D',
-                                style: TextStyle(
-                                    fontSize: 16, color: Color(0xff154670)),
-                              ),
-                              SizedBox(
-                                height: 15,
-                              ),
-                              Text(
-                                'Vitamin B12',
-                                style: TextStyle(
-                                    fontSize: 16, color: Color(0xff154670)),
-                              ),
-                              SizedBox(
-                                height: 15,
-                              ),
-                              Text(
-                                'Selenium',
-                                style: TextStyle(
-                                    fontSize: 16, color: Color(0xff154670)),
-                              ),
-                              SizedBox(
-                                height: 15,
-                              ),
-                              Text(
-                                'Iodine',
-                                style: TextStyle(
-                                    fontSize: 16, color: Color(0xff154670)),
-                              ),
-                            ],
-                          ),
-                        )
+                          margin: const EdgeInsets.all(20),
+                          child: (nutritionList!.isNotEmpty)
+                              ? ListView.builder(
+                                  itemCount: nutritionList!.length,
+                                  shrinkWrap: true,
+                                  itemBuilder: (context, index) {
+                                    var item = nutritionList![index];
+                                    return Container(
+                                      margin: const EdgeInsets.only(bottom: 15),
+                                      child: Text(
+                                        item.nutritionName,
+                                        style: const TextStyle(
+                                            fontSize: 16,
+                                            color: Color(0xff154670)),
+                                      ),
+                                    );
+                                  },
+                                )
+                              : const Center(
+                                  child: Text('No nutrition added yet'),
+                                ),
+                        ),
                       ],
                     ),
                   ),
@@ -250,3 +267,54 @@ class Nutrition extends StatelessWidget {
     );
   }
 }
+
+// Column(
+//                             crossAxisAlignment: CrossAxisAlignment.start,
+//                             children: [
+                              // Text(
+                              //   'Omega-3 Fatty Acids',
+                              //   style: TextStyle(
+                              //       fontSize: 16, color: Color(0xff154670)),
+                              // ),
+//                               SizedBox(
+//                                 height: 15,
+//                               ),
+//                               Text(
+//                                 'High Qaulity of Protein',
+//                                 style: TextStyle(
+//                                     fontSize: 16, color: Color(0xff154670)),
+//                               ),
+//                               SizedBox(
+//                                 height: 15,
+//                               ),
+//                               Text(
+//                                 'Vitamin D',
+//                                 style: TextStyle(
+//                                     fontSize: 16, color: Color(0xff154670)),
+//                               ),
+//                               SizedBox(
+//                                 height: 15,
+//                               ),
+//                               Text(
+//                                 'Vitamin B12',
+//                                 style: TextStyle(
+//                                     fontSize: 16, color: Color(0xff154670)),
+//                               ),
+//                               SizedBox(
+//                                 height: 15,
+//                               ),
+//                               Text(
+//                                 'Selenium',
+//                                 style: TextStyle(
+//                                     fontSize: 16, color: Color(0xff154670)),
+//                               ),
+//                               SizedBox(
+//                                 height: 15,
+//                               ),
+//                               Text(
+//                                 'Iodine',
+//                                 style: TextStyle(
+//                                     fontSize: 16, color: Color(0xff154670)),
+//                               ),
+//                             ],
+//                           ),
