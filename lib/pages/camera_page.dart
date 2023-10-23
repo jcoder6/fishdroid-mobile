@@ -72,7 +72,7 @@ class _CameraPageState extends State<CameraPage> {
         recognitions.forEach((response) {
           result += response['label'] +
               ' ' +
-              (response['confidence'] * 100 as double).toStringAsFixed(2) +
+              (response['confidence'] * 100 - 30 as double).toStringAsFixed(2) +
               "%" +
               "\n\n";
         });

@@ -57,12 +57,6 @@ class _FishPagesState extends State<FishPages> {
                   image: AssetImage('images/img-bg-design/bg-feature.jpg'),
                   fit: BoxFit.fill,
                 ),
-                // gradient: LinearGradient(
-                //   colors: [Color.fromARGB(255, 158, 212, 253), Color(0xff0c82df)],
-                //   stops: [0, 1],
-                //   begin: Alignment.bottomCenter,
-                //   end: Alignment.topCenter,
-                // ),
               ),
               child: const Padding(
                 padding: EdgeInsets.all(25.0),
