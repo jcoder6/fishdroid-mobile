@@ -1,11 +1,13 @@
 import 'package:fishdroid/data/fishes.dart';
 import 'package:fishdroid/data/recipe_data.dart';
+import 'package:fishdroid/data/term.dart';
 import 'package:http/http.dart' as http;
 
 class RemoteService {
   final client = http.Client();
   final apiFishLink = 'http://localhost:8000/api/fishes/';
   final apiRecipeLink = 'http://localhost:8000/api/recipes/';
+  final apiTermLink = 'http://localhost:8000/api/terms/';
 
   /*
     FISH API
@@ -77,6 +79,29 @@ class RemoteService {
     if(response.statusCode == 200){
       var json = response.body;
       return recipeFromJson(json);
+    }
+    return null;
+  }
+
+  Future<List<Term>?> getTerms() async {
+    final uri = Uri.parse(apiTermLink);
+    var response = await client.get(uri);
+
+    if(response.statusCode == 200) {
+      var json = response.body;
+      return termFromJson(json);
+    }
+
+    return null;
+  } 
+
+  Future<List<Term>?> getOneTerm(id) async {
+    final uri = Uri.parse(apiTermLink + id);
+    var response = await client.get(uri);
+
+    if(response.statusCode == 200) {
+      var json = response.body;
+      return termFromJson(json);
     }
     return null;
   }
