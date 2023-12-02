@@ -45,7 +45,7 @@ class MessagePage extends StatelessWidget {
                 child: TextField(
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    hintText: 'Enter a search term',
+                    hintText: 'Enter your email',
                   ),
                 ),
               ),
@@ -62,7 +62,7 @@ class MessagePage extends StatelessWidget {
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.all(10),
                     border: OutlineInputBorder(),
-                    hintText: 'Enter a search term',
+                    hintText: 'Enter your concern',
                   ),
                 ),
               ),

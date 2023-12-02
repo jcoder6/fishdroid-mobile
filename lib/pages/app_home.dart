@@ -17,6 +17,7 @@ class _AppHomeState extends State<AppHome> {
   List<Fish>? fishesList;
   var isLoaded = false;
   var imgFishLink = 'https://raw.githubusercontent.com/jcoder6/fishdroid_local/master/public/assets/images/fish_images/';
+  bool showProgressIndicator = true;
 
   @override
   void initState() {
@@ -24,6 +25,13 @@ class _AppHomeState extends State<AppHome> {
     super.initState();
 
     fetchFishData();
+    if(!isLoaded){
+      Future.delayed(const Duration(seconds: 30), () {
+        setState(() {
+          showProgressIndicator = false;
+        });
+      });
+    }
   }
 
   fetchFishData() async {
@@ -40,7 +48,11 @@ class _AppHomeState extends State<AppHome> {
     var appBar = AppBar();
     return Visibility(
       visible: isLoaded,
-      replacement: const Center(child: CircularProgressIndicator(),),
+      replacement: Center(
+        child: showProgressIndicator 
+            ? const CircularProgressIndicator() 
+            : const Text("Can't connect to the server")
+        ),
       child: SingleChildScrollView(
         child: Column(
           children: [

@@ -15,9 +15,6 @@ class _HatcheriesState extends State<Hatcheries> {
     List<HatcheryData> hatcheryList = [
       HatcheryData(1, 1, 'Bangus', "HATCH_VIDEO_001", 'Some Hatching Process'),
       HatcheryData(2, 2, 'Tilapia', "HATCH_VIDEO_002", 'Some Hatching Process'),
-      HatcheryData(3, 3, 'Hipon', "HATCH_VIDEO_003", 'Some Hatching Process'),
-      HatcheryData(4, 4, 'Dalag', "HATCH_VIDEO_004", 'Some Hatching Process'),
-      HatcheryData(5, 5, 'Carpa', "HATCH_VIDEO_005", 'Some Hatching Process'),
     ];
 
     return SingleChildScrollView(

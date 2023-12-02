@@ -6,10 +6,10 @@ import 'package:http/http.dart' as http;
 
 class RemoteService {
   final client = http.Client();
-  final apiFishLink = 'http://localhost:8000/api/fishes/';
-  final apiRecipeLink = 'http://localhost:8000/api/recipes/';
-  final apiTermLink = 'http://localhost:8000/api/terms/';
-  final apiNutriLink = 'http://localhost:8000/api/nutritions/';
+  final apiFishLink = 'http://localhost:8080/api/fishes/';
+  final apiRecipeLink = 'http://localhost:8080/api/recipes/';
+  final apiTermLink = 'http://localhost:8080/api/terms/';
+  final apiNutriLink = 'http://localhost:8080/api/nutritions/';
 
   /*
     FISH API
