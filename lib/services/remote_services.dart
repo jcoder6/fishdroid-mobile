@@ -114,6 +114,17 @@ class RemoteService {
     return null;
   }
 
+  Future<List<Term>?> searchTerm(input) async {
+    final uri = Uri.parse('${apiTermLink}search/$input');
+    var response = await client.get(uri);
+
+    if(response.statusCode == 200){
+      var json = response.body;
+      return termFromJson(json);
+    }
+    return null;
+  }
+
   /*
     NUTRITION API
   */
