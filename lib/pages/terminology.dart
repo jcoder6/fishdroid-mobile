@@ -15,10 +15,11 @@ class Termniology extends StatefulWidget {
 class _TermniologyState extends State<Termniology> {
   List<Term>? termList;
   var isLoaded = false;
+  var termImageLink =
+      "https://raw.githubusercontent.com/jcoder6/fishdroid_local/master/public/assets/images/term_images/";
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getTermList();
   }
@@ -35,8 +36,6 @@ class _TermniologyState extends State<Termniology> {
 
   @override
   Widget build(BuildContext context) {
-    var count = 0;
-
     return Visibility(
       visible: isLoaded,
       replacement: const Center(
@@ -59,17 +58,18 @@ class _TermniologyState extends State<Termniology> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 25,
-            ),
             SizedBox(
-              width: MediaQuery.of(context).size.width - 50,
-              child: ListView.builder(
+              width: MediaQuery.of(context).size.width - 40,
+              child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                ),
                 shrinkWrap: true,
                 itemCount: termList?.length,
                 itemBuilder: (BuildContext context, int index) {
                   var item = termList![index];
-                  count++;
                   return GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -80,41 +80,40 @@ class _TermniologyState extends State<Termniology> {
                       );
                     },
                     child: Container(
-                      padding: const EdgeInsets.all(15),
+                      // padding: const EdgeInsets.all(15),
                       // margin: EdgeInsets.only(bottom: 20),
-                      decoration: const BoxDecoration(
-                        color: Colors.white54,
-                        border: Border(
-                          bottom:
-                              BorderSide(color: Color(0xff154670), width: 1),
-                        ),
-                      ),
-                      child: Row(
-                        children: [
-                          Text(
-                            count.toString(),
-                            style: const TextStyle(
-                              color: Color(0xff154670),
-                              fontSize: 16,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 15,
-                          ),
-                          Text(
-                            item.techTerm.length <= 35
-                                ? item.techTerm
-                                // ignore: prefer_interpolation_to_compose_strings
-                                : item.techTerm.substring(0, 35) +
-                                    '...', // Truncate text if it's longer than 15 characters.
-                            style: const TextStyle(
-                              color: Color(0xff154670),
-                              fontSize: 16,
-                            ),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color.fromARGB(255, 107, 107, 107)
+                                .withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 3,
+                            offset: Offset(2, 2), // Adjust the values as needed
                           ),
                         ],
+                        image: DecorationImage(
+                          image: NetworkImage(termImageLink + item.termImg),
+                          fit: BoxFit.cover,
+                        ),
+                        color: Colors.white54,
+                      ),
+                      child: Center(
+                        child: Container(
+                          padding: const EdgeInsets.all(10),
+                          color: const Color.fromARGB(105, 255, 255, 255),
+                          child: Text(
+                            item.techTerm,
+                            softWrap: true,
+                            style: const TextStyle(
+                                color: Color.fromARGB(255, 32, 32, 32),
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.center,
+                            // overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
                       ),
                     ),
                   );

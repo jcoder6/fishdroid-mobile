@@ -1,5 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:fishdroid/includes/splash.dart';
+import 'package:fishdroid/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 List<CameraDescription> ? cameras;
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const Splash(),
+      home: const MyHomePage(pageIndex: 1),
       debugShowCheckedModeBanner: false,
     );
   }

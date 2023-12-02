@@ -15,12 +15,15 @@ class FishListItem extends StatefulWidget {
 }
 
 class _FishListItemState extends State<FishListItem> {
-  final imgFishLink = 'https://raw.githubusercontent.com/jcoder6/fishdroid_local/master/public/assets/images/fish_images/';
+  final imgFishLink =
+      'https://raw.githubusercontent.com/jcoder6/fishdroid_local/master/public/assets/images/fish_images/';
 
   @override
   Widget build(BuildContext context) {
-  final localNameSplit = widget.fish.localName.split(';'); // splittin the localname so that I can only get the firts local name because something local name is too long and it destroy the User Interface
-  final localName = localNameSplit[0]; // assining the first local name into a variable
+    final localNameSplit = widget.fish.localName.split(
+        ';'); // splittin the localname so that I can only get the firts local name because something local name is too long and it destroy the User Interface
+    final localName =
+        localNameSplit[0]; // assining the first local name into a variable
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -55,7 +58,8 @@ class _FishListItemState extends State<FishListItem> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   image: DecorationImage(
-                      image: NetworkImage(imgFishLink + widget.fish.fishImage), fit: BoxFit.fill),
+                      image: NetworkImage(imgFishLink + widget.fish.fishImage),
+                      fit: BoxFit.fill),
                 ),
               ),
               SizedBox(
@@ -66,7 +70,11 @@ class _FishListItemState extends State<FishListItem> {
                   children: [
                     Text(
                       widget.fish.fishName,
-                      style: const TextStyle(color: Color(0xff154670)),
+                      style: const TextStyle(
+                        color: Color(0xff154670),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
                     ),
                     Text(
                       widget.fish.scientificName,

@@ -82,7 +82,7 @@ class _AppHomeState extends State<AppHome> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Today',
+                      'Featured',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -90,7 +90,7 @@ class _AppHomeState extends State<AppHome> {
                       ),
                     ),
                     Text(
-                      'Featured',
+                      'Today',
                       style: TextStyle(
                         fontSize: 30,
                         color: Color.fromARGB(255, 255, 255, 255),
