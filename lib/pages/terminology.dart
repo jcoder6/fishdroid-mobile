@@ -15,6 +15,7 @@ class Termniology extends StatefulWidget {
 class _TermniologyState extends State<Termniology> {
   List<Term>? termList;
   var isLoaded = false;
+  TextEditingController searchController = TextEditingController();
   var termImageLink =
       "https://raw.githubusercontent.com/jcoder6/fishdroid_local/master/public/assets/images/term_images/";
 
@@ -31,6 +32,14 @@ class _TermniologyState extends State<Termniology> {
       setState(() {
         isLoaded = true;
       });
+    }
+  }
+
+  getSearch(input) async {
+    termList = await RemoteService().searchTerm(input);
+
+    if(termList != null) {
+      isLoaded = true;
     }
   }
 
@@ -58,8 +67,29 @@ class _TermniologyState extends State<Termniology> {
                 ),
               ),
             ),
+            Container(
+              width: MediaQuery.of(context).size.width - 50,
+              margin: const EdgeInsets.only(bottom: 20),
+              child: TextField(
+                  controller: searchController,
+                  decoration: InputDecoration(
+                    hintText: 'Search...',
+                    suffixIcon: IconButton(
+                      icon: const Icon(Icons.search),
+                      onPressed: () {
+                        // Perform the search here
+                        // You can add your search logic here
+                        String searchInput = searchController.text;
+                        setState(() {
+                          getSearch(searchInput);
+                        });
+                      },
+                    ),
+                  ),
+                ),
+            ),
             SizedBox(
-              width: MediaQuery.of(context).size.width - 40,
+              width: MediaQuery.of(context).size.width - 50,
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
@@ -86,11 +116,11 @@ class _TermniologyState extends State<Termniology> {
                         borderRadius: BorderRadius.circular(8.0),
                         boxShadow: [
                           BoxShadow(
-                            color: Color.fromARGB(255, 107, 107, 107)
+                            color: const Color.fromARGB(255, 107, 107, 107)
                                 .withOpacity(0.5),
                             spreadRadius: 2,
                             blurRadius: 3,
-                            offset: Offset(2, 2), // Adjust the values as needed
+                            offset: const Offset(2, 2), // Adjust the values as needed
                           ),
                         ],
                         image: DecorationImage(
@@ -103,6 +133,7 @@ class _TermniologyState extends State<Termniology> {
                         child: Container(
                           padding: const EdgeInsets.all(10),
                           color: const Color.fromARGB(105, 255, 255, 255),
+                          width: MediaQuery.of(context).size.width,
                           child: Text(
                             item.techTerm,
                             softWrap: true,
