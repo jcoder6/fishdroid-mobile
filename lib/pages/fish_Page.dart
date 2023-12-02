@@ -1,7 +1,7 @@
 // import 'package:fishdroid/pages/home.dart';
 //import 'package:fishdroid/pages/view_fish_page.dart';
 // import 'package:fishdroid/pages/view_fish_page.dart';
-import 'package:fishdroid/pages/search_page.dart';
+// import 'package:fishdroid/pages/search_page.dart';
 import 'package:fishdroid/services/remote_services.dart';
 import 'package:fishdroid/widgets/fish_item_builder.dart';
 // import 'package:fishdroid/widgets/fish_item_builder.dart';
