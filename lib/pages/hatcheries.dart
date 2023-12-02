@@ -22,9 +22,9 @@ class _HatcheriesState extends State<Hatcheries> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Center(
+            const Center(
               child: Padding(
-                padding: const EdgeInsets.all(20),
+                padding: EdgeInsets.all(20),
                 child: Text(
                   'Hatching Process',
                   style: TextStyle(
@@ -35,12 +35,14 @@ class _HatcheriesState extends State<Hatcheries> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 25,
-            ),
             Container(
               width: MediaQuery.of(context).size.width - 50,
-              child: ListView.builder(
+              child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 20,
+                  crossAxisSpacing: 20,
+                ),
                 shrinkWrap: true,
                 itemCount: hatcheryList.length,
                 itemBuilder: (BuildContext context, int index) {
@@ -55,25 +57,26 @@ class _HatcheriesState extends State<Hatcheries> {
                       );
                     },
                     child: Container(
-                      padding: EdgeInsets.all(15),
-                      margin: EdgeInsets.only(bottom: 20),
+                      padding: const EdgeInsets.all(15),
+                      margin: const EdgeInsets.only(bottom: 20),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: const Color(0xffC5D7F0),
                         boxShadow: [
                           BoxShadow(
-                            color: Color.fromARGB(255, 107, 107, 107)
+                            color: const Color.fromARGB(255, 107, 107, 107)
                                 .withOpacity(0.5),
                             spreadRadius: 2,
                             blurRadius: 3,
-                            offset: Offset(2, 2), // Adjust the values as needed
+                            offset: const Offset(
+                                2, 2), // Adjust the values as needed
                           ),
                         ],
                       ),
                       child: Center(
                         child: Text(
                           item.fishName,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Color(0xff154670),
                             fontSize: 20,
                           ),

@@ -72,8 +72,8 @@ class _CameraPageState extends State<CameraPage> {
         recognitions.forEach((response) {
           result += response['label'] +
               ' ' +
-              (response['confidence'] * 100 - 30 as double).toStringAsFixed(2) +
-              "%" +
+              // (response['confidence'] * 100 - 30 as double).toStringAsFixed(2) +
+              // "%" +
               "\n\n";
         });
       }
@@ -132,7 +132,7 @@ class _CameraPageState extends State<CameraPage> {
                             ? Container(
                                 height: 500,
                                 width: MediaQuery.of(context).size.width - 50,
-                                child: Center(
+                                child: const Center(
                                   child: FaIcon(
                                     FontAwesomeIcons.camera,
                                     size: 50,

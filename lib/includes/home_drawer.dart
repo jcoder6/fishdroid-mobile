@@ -42,26 +42,26 @@ class HomeDrawer extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            ListTile(
-              title:const Center(
-                child: Text(
-                  'Search',
-                  style: TextStyle(
-                      color: Color(0xff154670),
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const MyHomePage(
-                            pageIndex: 9)
-                            )
-                            );
-              },
-            ),
+            // ListTile(
+            //   title:const Center(
+            //     child: Text(
+            //       'Search',
+            //       style: TextStyle(
+            //           color: Color(0xff154670),
+            //           fontSize: 16,
+            //           fontWeight: FontWeight.bold),
+            //     ),
+            //   ),
+            //   onTap: () {
+            //     Navigator.push(
+            //         context,
+            //         MaterialPageRoute(
+            //             builder: (context) => const MyHomePage(
+            //                 pageIndex: 9)
+            //                 )
+            //                 );
+            //   },
+            // ),
             ListTile(
               title:const Center(
                 child: Text(
