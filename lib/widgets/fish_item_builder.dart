@@ -41,10 +41,10 @@ class _FishListItemState extends State<FishListItem> {
             borderRadius: BorderRadius.circular(10),
             boxShadow: [
               BoxShadow(
-                color: Color.fromARGB(255, 107, 107, 107).withOpacity(0.5),
+                color: const Color.fromARGB(255, 107, 107, 107).withOpacity(0.5),
                 spreadRadius: 2,
                 blurRadius: 3,
-                offset: Offset(2, 2), // Adjust the values as needed
+                offset: const Offset(2, 2), // Adjust the values as needed
               ),
             ],
           ),
@@ -62,27 +62,37 @@ class _FishListItemState extends State<FishListItem> {
                       fit: BoxFit.fill),
                 ),
               ),
-              SizedBox(
-                height: 100,
+              Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       widget.fish.fishName,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
                       style: const TextStyle(
                         color: Color(0xff154670),
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
                       ),
                     ),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     Text(
                       widget.fish.scientificName,
                       style: const TextStyle(color: Color(0xff154670)),
                     ),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     Text(
                       widget.fish.familyName.camelString(),
                       style: const TextStyle(color: Color(0xff154670)),
+                    ),
+                    const SizedBox(
+                      height: 10,
                     ),
                     Text(
                       localName,

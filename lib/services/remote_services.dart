@@ -50,6 +50,27 @@ class RemoteService {
     return null;
   }
 
+  rowCount() async{
+    final uri = Uri.parse('${apiFishLink}getRowCount/1');
+
+    var response = await client.get(uri);
+    if(response.statusCode == 200){
+      return int.parse(response.body);
+    }
+    return null;
+  }
+
+  Future<List<Fish>?> fishPagination(page) async {
+    final uri = Uri.parse('${apiFishLink}pagination/$page');
+    var response = await client.get(uri);
+
+    if(response.statusCode == 200) {
+      var json = response.body;
+      return fishFromJson(json);
+    }
+    return null;
+  }
+
   /*
     RECIPE API
   */
