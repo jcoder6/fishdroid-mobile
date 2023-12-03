@@ -1,8 +1,11 @@
 import 'package:fishdroid/data/fishes.dart';
+import 'package:fishdroid/data/hatch_video_data.dart';
+import 'package:fishdroid/data/hatchery.dart';
 import 'package:fishdroid/data/nutrition_data.dart';
 import 'package:fishdroid/data/recipe_data.dart';
 import 'package:fishdroid/data/term.dart';
 import 'package:fishdroid/data/trivia_data.dart';
+// ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 
 class RemoteService {
@@ -12,6 +15,8 @@ class RemoteService {
   final apiTermLink = 'http://localhost:8080/api/terms/';
   final apiNutriLink = 'http://localhost:8080/api/nutritions/';
   final apiTriviaLink = 'http://localhost:8080/api/trivia/';
+  final apiHatcheryLink = 'http://localhost:8080/api/hatchery/';
+  final apiHatchVideoLink = 'http://localhost:8080/api/hatchvideos/';
 
   /*
     FISH API
@@ -172,6 +177,43 @@ class RemoteService {
       return triviaDataFromJson(json);
     }
 
+    return null;
+  }
+
+  /*
+    HATCHERY API
+  */
+
+  Future<List<HatcheryData>?> getHatchery() async {
+    final uri = Uri.parse(apiHatcheryLink);
+    var response = await client.get(uri);
+
+    if(response.statusCode == 200){
+      var json = response.body;
+      return hatcheryDataFromJson(json);
+    }
+    return null;
+  } 
+
+  Future<List<HatcheryData>?> getOneHatchery(id) async {
+    final uri = Uri.parse(apiHatcheryLink + id.toString());
+    var response = await client.get(uri);
+
+    if(response.statusCode == 200){
+      var json = response.body;
+      return hatcheryDataFromJson(json);
+    }
+    return null;
+  } 
+
+  Future<List<HatchVideoData>?> hatchVideos(id) async {
+    final uri = Uri.parse('${apiHatchVideoLink}videobyid/$id');
+    var response = await client.get(uri);
+    if(response.statusCode == 200){
+      var json = response.body;
+      print(json);
+      return hatchVideoDataFromJson(json);
+    }
     return null;
   }
 }
