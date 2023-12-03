@@ -16,6 +16,8 @@ class Fish {
     String localName;
     String fishImage;
     String fishInfo;
+    int isEdible;
+    int isPettable;
     String familyName;
 
     Fish({
@@ -26,6 +28,8 @@ class Fish {
         required this.localName,
         required this.fishImage,
         required this.fishInfo,
+        required this.isEdible,
+        required this.isPettable,
         required this.familyName,
     });
 
@@ -37,6 +41,8 @@ class Fish {
         localName: json["local_name"],
         fishImage: json["fish_image"],
         fishInfo: json["fish_info"],
+        isEdible: json["is_edible"],
+        isPettable: json["is_pettable"],
         familyName: json["family_name"],
     );
 
@@ -48,6 +54,8 @@ class Fish {
         "local_name": localName,
         "fish_image": fishImage,
         "fish_info": fishInfo,
+        "is_edible": isEdible,
+        "is_pettable": isPettable,
         "family_name": familyName,
     };
 }

@@ -22,6 +22,7 @@ class _FishPagesState extends State<FishPages> {
   var header2 = 'Fishes';
   var page = 0;
   var fishCount = 0;
+  var isSearch = false;
   // final ScrollController _scrollController = ScrollController();
   final ScrollController _controller = ScrollController();
 
@@ -63,6 +64,7 @@ class _FishPagesState extends State<FishPages> {
       isLoaded = true;
       header1 = 'Search';
       header2 = 'Result';
+      isSearch = true;
     }
   }
 
@@ -194,55 +196,62 @@ class _FishPagesState extends State<FishPages> {
                       ),
               ),
             ),
-            Container(
-              transform: Matrix4.translationValues(0, -120, 0),
-              width: MediaQuery.of(context).size.width,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  TextButton(
-                    onPressed: page > 0
-                        ? () {
-                            setState(() {
-                              page--;
-                              getFishData();
-                            });
-                            _scrollToTop();
-                          }
-                        : null,
-                    child: Text(
-                      'Prev',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: page > 0 ? const Color(0xff154670) : const Color(0xff154670).withOpacity(0.5),
-                      ),
+            !isSearch
+                ? Container(
+                    transform: Matrix4.translationValues(0, -120, 0),
+                    width: MediaQuery.of(context).size.width,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        TextButton(
+                          onPressed: page > 0
+                              ? () {
+                                  setState(() {
+                                    page--;
+                                    getFishData();
+                                  });
+                                  _scrollToTop();
+                                }
+                              : null,
+                          child: Text(
+                            'Prev',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: page > 0
+                                  ? const Color(0xff154670)
+                                  : const Color(0xff154670).withOpacity(0.5),
+                            ),
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: page < (fishCount / 20).floor()
+                              ? () {
+                                  setState(() {
+                                    page++;
+                                    getFishData();
+                                    // print(_scrollController.position);
+                                  });
+                                  _scrollToTop();
+                                }
+                              : null,
+                          child: Text(
+                            'Next',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: page < (fishCount / 20).floor()
+                                  ? const Color(0xff154670)
+                                  : const Color(0xff154670).withOpacity(0.5),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
+                  )
+                : const Center(
+                    child: Text(''),
                   ),
-                  TextButton(
-                    onPressed: page < (fishCount / 20).floor()
-                        ? () {
-                            setState(() {
-                              page++;
-                              getFishData();
-                              // print(_scrollController.position);
-                            });
-                            print(page);
-                            _scrollToTop();
-                          }
-                        : null,
-                    child: Text(
-                      'Next',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: page < (fishCount / 20).floor() ? const Color(0xff154670) : const Color(0xff154670).withOpacity(0.5),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            )
           ],
         ),
       ),

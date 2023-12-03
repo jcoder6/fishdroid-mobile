@@ -19,7 +19,8 @@ class ViewFishPage extends StatefulWidget {
 class _ViewFishPageState extends State<ViewFishPage> {
   List<Fish>? fish;
   var isLoaded = false;
-  var imgFishLink = 'https://raw.githubusercontent.com/jcoder6/fishdroid_local/master/public/assets/images/fish_images/';
+  var imgFishLink =
+      'https://raw.githubusercontent.com/jcoder6/fishdroid_local/master/public/assets/images/fish_images/';
   @override
   void initState() {
     // TODO: implement initState
@@ -29,7 +30,7 @@ class _ViewFishPageState extends State<ViewFishPage> {
 
   getCurrentFish() async {
     fish = await RemoteService().getOneFish(widget.fishId);
-    if(fish != null){
+    if (fish != null) {
       setState(() {
         isLoaded = true;
       });
@@ -38,13 +39,17 @@ class _ViewFishPageState extends State<ViewFishPage> {
 
   @override
   Widget build(BuildContext context) {
-    if(fish == null) {
-      return const Center(child: CircularProgressIndicator(),);
+    if (fish == null) {
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
     } else {
-        var currFish = fish![0];
+      var currFish = fish![0];
       return Visibility(
         visible: isLoaded,
-        replacement: const Center(child: CircularProgressIndicator(),),
+        replacement: const Center(
+          child: CircularProgressIndicator(),
+        ),
         child: Scaffold(
             backgroundColor: const Color.fromARGB(255, 238, 238, 238),
             appBar: HomeAppBar(),
@@ -57,9 +62,10 @@ class _ViewFishPageState extends State<ViewFishPage> {
                       child: Text(
                         'View Fish',
                         style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 25,
-                            color: Color(0xff154670),),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                          color: Color(0xff154670),
+                        ),
                       ),
                     ),
                     Container(
@@ -70,15 +76,17 @@ class _ViewFishPageState extends State<ViewFishPage> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         image: DecorationImage(
-                            image: NetworkImage(imgFishLink + currFish.fishImage),
+                            image:
+                                NetworkImage(imgFishLink + currFish.fishImage),
                             fit: BoxFit.fill),
                         boxShadow: [
                           BoxShadow(
-                            color:
-                                const Color.fromARGB(255, 107, 107, 107).withOpacity(0.5),
+                            color: const Color.fromARGB(255, 107, 107, 107)
+                                .withOpacity(0.5),
                             spreadRadius: 2,
                             blurRadius: 3,
-                            offset: const Offset(2, 2), // Adjust the values as needed
+                            offset: const Offset(
+                                2, 2), // Adjust the values as needed
                           ),
                         ],
                       ),
@@ -92,17 +100,18 @@ class _ViewFishPageState extends State<ViewFishPage> {
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
-                            color:
-                                const Color.fromARGB(255, 107, 107, 107).withOpacity(0.5),
+                            color: const Color.fromARGB(255, 107, 107, 107)
+                                .withOpacity(0.5),
                             spreadRadius: 2,
                             blurRadius: 3,
-                            offset: const Offset(2, 2), // Adjust the values as needed
+                            offset: const Offset(
+                                2, 2), // Adjust the values as needed
                           ),
                         ],
                       ),
                       child: Padding(
-                        padding:
-                            const EdgeInsets.symmetric(vertical: 15.0, horizontal: 30.0),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 15.0, horizontal: 30.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -125,9 +134,7 @@ class _ViewFishPageState extends State<ViewFishPage> {
                                 fontSize: 16,
                               ),
                             ),
-                            
                             const SizedBox(height: 10),
-
                             const Text(
                               'Family Name: ',
                               style: TextStyle(
@@ -139,9 +146,7 @@ class _ViewFishPageState extends State<ViewFishPage> {
                                 fontSize: 16,
                               ),
                             ),
-
                             const SizedBox(height: 10),
-
                             const Text(
                               'Local Name: ',
                               style: TextStyle(
@@ -153,23 +158,30 @@ class _ViewFishPageState extends State<ViewFishPage> {
                                 fontSize: 16,
                               ),
                             ),
-                              
                             
                             const SizedBox(height: 15),
+
                             Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Container(
                                   decoration: BoxDecoration(
-                                      color: const Color(0xff154670),
-                                      borderRadius: BorderRadius.circular(100)),
+                                    color: currFish.isEdible == 1 ? const Color(0xff154670) : const Color(0xff154670).withOpacity(0.5),
+                                    borderRadius: BorderRadius.circular(100),
+                                  ),
                                   child: GestureDetector(
-                                    onTap: () => {
-                                      Navigator.push(
+                                    onTap: currFish.isEdible == 1
+                                      ? () => {
+                                        Navigator.push(
                                           (context),
-                                          MaterialPageRoute(builder: (context) => FishRecipeList(currFish.id.toString()))
-                                        )
-                                    },
+                                          MaterialPageRoute(
+                                            builder: (context) => FishRecipeList(
+                                              currFish.id.toString(),
+                                            ),
+                                          ),
+                                        ),
+                                      }
+                                      : null,
                                     child: const Padding(
                                       padding: EdgeInsets.all(10.0),
                                       child: Center(
@@ -187,17 +199,20 @@ class _ViewFishPageState extends State<ViewFishPage> {
                                 ),
                                 Container(
                                   decoration: BoxDecoration(
-                                      color: const Color(0xff154670),
+                                      color: currFish.isEdible == 1 ? const Color(0xff154670) : const Color(0xff154670).withOpacity(0.5),
                                       borderRadius: BorderRadius.circular(100)),
                                   child: GestureDetector(
-                                    onTap: () => {
-                                      Navigator.push(
-                                        (context),
-                                        MaterialPageRoute(
-                                          builder: (context) => Nutrition(currFish.id.toString()),
-                                        ),
-                                      )
-                                    },
+                                    onTap: currFish.isEdible == 1
+                                      ? () => {
+                                        Navigator.push(
+                                          (context),
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                Nutrition(currFish.id.toString()),
+                                          ),
+                                        )
+                                      }
+                                      : null,
                                     child: const Padding(
                                       padding: EdgeInsets.all(10.0),
                                       child: Center(
@@ -210,6 +225,35 @@ class _ViewFishPageState extends State<ViewFishPage> {
                                     ),
                                   ),
                                 )
+                              ],
+                            ),
+                            const SizedBox(height: 15),
+                            Row(
+                              children: [
+                                currFish.isEdible == 1 
+                                ? const FaIcon(FontAwesomeIcons.check, color: Colors.green,)
+                                : const FaIcon(FontAwesomeIcons.xmark, color: Colors.red,),
+                                const Text(
+                                  '   Can be eaten?',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                currFish.isPettable == 0
+                                ? const FaIcon(FontAwesomeIcons.xmark, color: Colors.red,)
+                                : const FaIcon(FontAwesomeIcons.check, color: Colors.green,),
+                                const Text(
+                                  '     Can be petted?',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                               ],
                             ),
                             const SizedBox(height: 15),
