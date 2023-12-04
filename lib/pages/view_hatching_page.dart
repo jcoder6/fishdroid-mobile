@@ -5,10 +5,7 @@ import 'package:fishdroid/includes/home_drawer.dart';
 import 'package:fishdroid/services/remote_services.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-// import 'package:url_launcher/link.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-// import 'package:video_player/video_player.dart';
 
 class ViewHatcingPage extends StatefulWidget {
   final int fishID;
