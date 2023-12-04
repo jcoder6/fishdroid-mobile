@@ -1,4 +1,3 @@
-import 'package:fishdroid/includes/below_links.dart';
 import 'package:fishdroid/pages/view_recipe_page.dart';
 import 'package:fishdroid/services/remote_services.dart';
 import 'package:flutter/material.dart';
@@ -15,21 +14,33 @@ class Recipes extends StatefulWidget {
 
 class _RecipesState extends State<Recipes> {
   List<Recipe>? recipeLists;
+  List<Recipe>? allRecipes;
   var isLoaded = false;
-  var imgRecipeLink = "https://raw.githubusercontent.com/jcoder6/fishdroid_local/master/public/assets/images/recipe_images/";
+  var isAllRecipe = false;
+  var imgRecipeLink =
+      "https://raw.githubusercontent.com/jcoder6/fishdroid_local/master/public/assets/images/recipe_images/";
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getRecipes();
+    getAllRecipes();
   }
 
   getRecipes() async {
     recipeLists = await RemoteService().getRecipes();
-    if(recipeLists != null){
+    if (recipeLists != null) {
       setState(() {
         isLoaded = true;
+      });
+    }
+  }
+
+  getAllRecipes() async {
+    allRecipes = await RemoteService().allRecipes();
+    if (allRecipes != null) {
+      setState(() {
+        isAllRecipe = true;
       });
     }
   }
@@ -96,18 +107,6 @@ class _RecipesState extends State<Recipes> {
           Container(
             height: 250,
             transform: Matrix4.translationValues(0, -120, 0),
-            // width: 170,
-            // decoration: BoxDecoration(
-            //   borderRadius: BorderRadius.circular(10),
-            //   boxShadow: [
-            //     BoxShadow(
-            //       color: Colors.black.withOpacity(0.3),
-            //       spreadRadius: 2,
-            //       blurRadius: 5,
-            //       offset: Offset(2, -2), // Adjust the values as needed
-            //     ),
-            //   ],
-            // ),
             child: ScrollSnapList(
               itemBuilder: _fishBuilder,
               itemCount: recipeLists?.length ?? 0,
@@ -116,7 +115,72 @@ class _RecipesState extends State<Recipes> {
               dynamicItemSize: true,
             ),
           ),
-          const BelowLinks(),
+          Container(
+            transform: Matrix4.translationValues(0, -70, 0),
+            child: const Text(
+              'Recipes',
+              style: TextStyle(
+                fontSize: 23,
+                fontWeight: FontWeight.bold,
+                color: Color(0xff154670),
+              ),
+            ),
+          ),
+          Container(
+              width: MediaQuery.of(context).size.width - 50,
+              height: 650,
+              transform: Matrix4.translationValues(0, -50, 0),
+              decoration: BoxDecoration(
+                color: const Color(0xffC5D7F0),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.5),
+                    blurRadius: 5,
+                    offset: const Offset(2, -2),
+                  ),
+                ],
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: isAllRecipe
+                  ? ListView.builder(
+                      itemCount: allRecipes!.length,
+                      itemBuilder: (context, index) {
+                        var item = allRecipes![index];
+                        return TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              (context),
+                              MaterialPageRoute(
+                                builder: (context) => ViewRecipePage(item.id),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            width: MediaQuery.of(context).size.width,
+                            padding: const EdgeInsets.all(20),
+                            decoration: const BoxDecoration(
+                              border: Border(
+                                bottom: BorderSide(
+                                  color: Color(0xff154670),
+                                ),
+                              ),
+                            ),
+                            child: Text(
+                              item.recipeName,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                fontSize: 16,
+                                color: Color(0xff154670),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    )
+                  : const Center(
+                      child: CircularProgressIndicator(),
+                    ))
         ],
       ),
     );

@@ -93,6 +93,18 @@ class RemoteService {
     return null;
   }
 
+  Future<List<Recipe>?> allRecipes() async {
+    final uri = Uri.parse('${apiRecipeLink}getRandomRecipe/p');
+    var response = await client.get(uri);
+
+    if(response.statusCode == 200){
+      var json = response.body;
+      print(json);
+      return recipeFromJson(json);
+    }
+    return null;
+  }
+
   Future<List<Recipe>?> getOneRecipe(id) async {
     final uri = Uri.parse(apiRecipeLink + id);
     var response = await client.get(uri);
@@ -221,8 +233,7 @@ class RemoteService {
 
   /*
     GAME API
-  */
-  
+  */ 
   Future<GameData?> gameRandomData() async {
     final uri = Uri.parse(apiGameLink);
     var response = await client.get(uri);
@@ -234,5 +245,5 @@ class RemoteService {
     return null;
   }
 
-
+  
 }

@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import
+// ignore_for_file: unused_import, avoid_print
 import 'package:fishdroid/data/game_data.dart';
 import 'package:fishdroid/pages/game/answer/hidden_letters.dart';
 import 'package:fishdroid/pages/game/const/const.dart';
@@ -43,7 +43,7 @@ class _GameScreenState extends State<GameScreen> {
         word = gameRandomData!.quizAnswer.toUpperCase();
         isLoaded = true;
       });
-      // ignore: avoid_print
+      
       print(gameRandomData!.quizAnswer);
     }
   }

@@ -109,22 +109,27 @@ class _FishPagesState extends State<FishPages> {
                       padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
                         color: Colors.white38,
-                        borderRadius: BorderRadius.circular(5),
+                        borderRadius: BorderRadius.circular(100),
                       ),
-                      child: TextField(
-                        controller: searchController,
-                        decoration: InputDecoration(
-                          hintText: 'Search...',
-                          suffixIcon: IconButton(
-                            icon: const Icon(Icons.search),
-                            onPressed: () {
-                              // Perform the search here
-                              // You can add your search logic here
-                              String searchInput = searchController.text;
-                              setState(() {
-                                getSearch(searchInput);
-                              });
-                            },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width - 50,
+                        margin: const EdgeInsets.only(left: 10),
+                        child: TextField(
+                          controller: searchController,
+                          decoration: InputDecoration(
+                            hintText: 'Search...',
+                            border: InputBorder.none,
+                            suffixIcon: IconButton(
+                              icon: const Icon(Icons.search),
+                              onPressed: () {
+                                // Perform the search here
+                                // You can add your search logic here
+                                String searchInput = searchController.text;
+                                setState(() {
+                                  getSearch(searchInput);
+                                });
+                              },
+                            ),
                           ),
                         ),
                       ),
