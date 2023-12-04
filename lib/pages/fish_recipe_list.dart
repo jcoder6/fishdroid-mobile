@@ -46,7 +46,7 @@ class _FishRecipeListState extends State<FishRecipeList> {
           visible: isLoaded,
           replacement: const Center(child: CircularProgressIndicator(),),
           child: (recipeList!.isEmpty)
-              ? Center(child: Text('No recipe yet'),)
+              ? const Center(child: Text('No recipe yet'),)
               : SingleChildScrollView(
             child: Column(
               children: [
@@ -57,20 +57,14 @@ class _FishRecipeListState extends State<FishRecipeList> {
                       2,
                   transform:
                       Matrix4.translationValues(0, -appBar.preferredSize.height, 0),
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: NetworkImage("$imgFishLink${recipeList![0].fishImage}"),
+                      image: AssetImage("images/img-bg-design/bg-food.jpg"),
                       fit: BoxFit.fill,
                     ),
-                    // gradient: LinearGradient(
-                    //   colors: [Color.fromARGB(255, 158, 212, 253), Color(0xff0c82df)],
-                    //   stops: [0, 1],
-                    //   begin: Alignment.bottomCenter,
-                    //   end: Alignment.topCenter,
-                    // ),
                   ),
                   child: Padding(
-                    padding: EdgeInsets.all(25.0),
+                    padding: const EdgeInsets.all(25.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,

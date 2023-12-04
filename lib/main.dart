@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const Splash(),
+      home: const MyHomePage(pageIndex: 8,),
       debugShowCheckedModeBanner: false,
     );
   }
