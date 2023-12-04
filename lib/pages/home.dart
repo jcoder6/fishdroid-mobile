@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
     const Game(),
     const Termniology(),
     const MessagePage(),
-    const SearchPage(),
+    const SearchPage(""),
   ];
 
   @override

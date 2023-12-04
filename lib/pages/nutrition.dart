@@ -129,18 +129,36 @@ class _NutritionState extends State<Nutrition> {
                         .withOpacity(0.5),
                     spreadRadius: 2,
                     blurRadius: 3,
-                    offset: Offset(2, -2), // Adjust the values as needed
+                    offset: const Offset(2, -2), // Adjust the values as needed
                   ),
                 ],
               ),
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  Container(
+                    height: 150,
+                    width: MediaQuery.of(context).size.width - 200,
+                    margin: const EdgeInsets.symmetric(vertical: 20),
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: const Color.fromARGB(255, 107, 107, 107)
+                              .withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 3,
+                          offset: const Offset(1, 1), // Adjust the values as needed
+                        ),
+                      ],
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.blueGrey,
+                      image: DecorationImage(
+                          image: NetworkImage(imgFishLink + fish![0].fishImage),
+                          fit: BoxFit.fill),
+                    ),
+                  ),
+                  Column(
                     children: [
                       Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             fish![0].fishName,
@@ -188,28 +206,6 @@ class _NutritionState extends State<Nutrition> {
                           ),
                         ],
                       ),
-                      Container(
-                        height: 100,
-                        width: 150,
-                        decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color.fromARGB(255, 107, 107, 107)
-                                  .withOpacity(0.5),
-                              spreadRadius: 2,
-                              blurRadius: 3,
-                              offset:
-                                  Offset(1, 1), // Adjust the values as needed
-                            ),
-                          ],
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.blueGrey,
-                          image: DecorationImage(
-                              image: NetworkImage(
-                                  imgFishLink + fish![0].fishImage),
-                              fit: BoxFit.fill),
-                        ),
-                      )
                     ],
                   ),
                   const SizedBox(
@@ -267,54 +263,3 @@ class _NutritionState extends State<Nutrition> {
     );
   }
 }
-
-// Column(
-//                             crossAxisAlignment: CrossAxisAlignment.start,
-//                             children: [
-                              // Text(
-                              //   'Omega-3 Fatty Acids',
-                              //   style: TextStyle(
-                              //       fontSize: 16, color: Color(0xff154670)),
-                              // ),
-//                               SizedBox(
-//                                 height: 15,
-//                               ),
-//                               Text(
-//                                 'High Qaulity of Protein',
-//                                 style: TextStyle(
-//                                     fontSize: 16, color: Color(0xff154670)),
-//                               ),
-//                               SizedBox(
-//                                 height: 15,
-//                               ),
-//                               Text(
-//                                 'Vitamin D',
-//                                 style: TextStyle(
-//                                     fontSize: 16, color: Color(0xff154670)),
-//                               ),
-//                               SizedBox(
-//                                 height: 15,
-//                               ),
-//                               Text(
-//                                 'Vitamin B12',
-//                                 style: TextStyle(
-//                                     fontSize: 16, color: Color(0xff154670)),
-//                               ),
-//                               SizedBox(
-//                                 height: 15,
-//                               ),
-//                               Text(
-//                                 'Selenium',
-//                                 style: TextStyle(
-//                                     fontSize: 16, color: Color(0xff154670)),
-//                               ),
-//                               SizedBox(
-//                                 height: 15,
-//                               ),
-//                               Text(
-//                                 'Iodine',
-//                                 style: TextStyle(
-//                                     fontSize: 16, color: Color(0xff154670)),
-//                               ),
-//                             ],
-//                           ),

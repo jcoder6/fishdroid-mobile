@@ -38,6 +38,13 @@ class _MessagePageState extends State<MessagePage> {
   }
 
   @override
+  void dispose() {
+    textEmailController.dispose();
+    textMessageController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
