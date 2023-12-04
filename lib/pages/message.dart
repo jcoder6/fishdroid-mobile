@@ -1,4 +1,9 @@
+import 'package:fishdroid/data/message.dart';
+import 'package:fishdroid/pages/home.dart';
+import 'package:fishdroid/services/remote_services.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// import 'package:get/get.dart';
 
 class MessagePage extends StatefulWidget {
   const MessagePage({super.key});
@@ -11,9 +16,25 @@ class _MessagePageState extends State<MessagePage> {
   TextEditingController textEmailController = TextEditingController();
   TextEditingController textMessageController = TextEditingController();
 
+  SendMessage? messageInstance;
+  var isSent = false;
+  var isLoading = false;
+
   sendMessage(email, message) async {
-    print(email);
-    print(message);
+    var data = {
+      'email': email,
+      'message': message,
+      'is_read': '0',
+    };
+
+    messageInstance = await RemoteService().sendMessage(data);
+
+    if (message != null) {
+      print('message sent');
+      setState(() {
+        isSent = true;
+      });
+    }
   }
 
   @override
@@ -54,7 +75,8 @@ class _MessagePageState extends State<MessagePage> {
               //Input Email Container
               width: MediaQuery.of(context).size.width - 50,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                 child: TextField(
                   controller: textEmailController,
                   decoration: const InputDecoration(
@@ -69,7 +91,8 @@ class _MessagePageState extends State<MessagePage> {
               transform: Matrix4.translationValues(0, -20, 0),
               width: MediaQuery.of(context).size.width - 50,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                 child: TextField(
                   controller: textMessageController,
                   maxLines: null,
@@ -83,12 +106,30 @@ class _MessagePageState extends State<MessagePage> {
               ),
             ),
             ElevatedButton(
-              onPressed: () {
-                // Define the action to be performed when the button is pressed
-                // For example, you can submit the message or perform any other action here
-                sendMessage(textEmailController.text, textMessageController.text);
+              onPressed: () async {
+                setState(() {
+                  isLoading = true;
+                });
+                await sendMessage(
+                    textEmailController.text, textMessageController.text);
+
+                setState(() {
+                  isLoading = false;
+                });
+
+                // ignore: use_build_context_synchronously
+                showDialog(context: (context), builder: _messageDiaglog);
               },
-              child: const Text('Submit'),
+              child: !isLoading
+                  ? const Text('Submit')
+                  : const SizedBox(
+                      width: 16.0, // set your desired width
+                      height: 16.0, // set your desired height
+                      child: CircularProgressIndicator(
+                        color: Colors.white,
+                        strokeWidth: 2,
+                      ),
+                    ),
             ),
             Container(
                 //Submit Button Container
@@ -99,4 +140,33 @@ class _MessagePageState extends State<MessagePage> {
       ),
     );
   }
+}
+
+Widget _messageDiaglog(BuildContext context) {
+  return AlertDialog(
+    title: const Center(
+      child: Text('Message was sent!'),
+    ),
+    icon: const Center(
+      child:
+          FaIcon(FontAwesomeIcons.circleCheck, size: 50, color: Colors.green),
+    ),
+    content: SizedBox(
+      height: 30,
+      child: Center(
+        child: ElevatedButton(
+        onPressed: () {
+          Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const MyHomePage(
+                            pageIndex: 0)
+                            )
+                            );
+        },
+        child: const Text("OK"),
+      ),
+      ),
+    )
+  );
 }
