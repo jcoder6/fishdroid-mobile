@@ -2,6 +2,7 @@ import 'package:fishdroid/data/fishes.dart';
 import 'package:fishdroid/data/game_data.dart';
 import 'package:fishdroid/data/hatch_video_data.dart';
 import 'package:fishdroid/data/hatchery.dart';
+import 'package:fishdroid/data/message.dart';
 import 'package:fishdroid/data/nutrition_data.dart';
 import 'package:fishdroid/data/recipe_data.dart';
 import 'package:fishdroid/data/term.dart';
@@ -19,6 +20,7 @@ class RemoteService {
   final apiHatcheryLink = 'http://localhost:8080/api/hatchery/';
   final apiHatchVideoLink = 'http://localhost:8080/api/hatchvideos/';
   final apiGameLink = 'http://localhost:8080/api/game/';
+  final apiMessageLink = 'http://localhost:8080/api/message';
 
   /*
     FISH API
@@ -245,5 +247,18 @@ class RemoteService {
     return null;
   }
 
-  
+  /*
+    MESSAGE API
+  */ 
+
+  Future<SendMessage?> sendMessage(messageData) async {
+    final uri = Uri.parse(apiMessageLink);
+    var response = await client.post(uri, body: messageData);
+    if(response.statusCode == 201){
+      var json = response.body;
+      // print(response.body);
+      return sendMessageFromJson(json);
+    }
+    return null;
+  }
 }
