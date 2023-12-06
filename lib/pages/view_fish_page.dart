@@ -1,3 +1,4 @@
+import 'package:fishdroid/includes/colors.dart';
 import 'package:fishdroid/includes/extension.dart';
 import 'package:fishdroid/data/fishes.dart';
 import 'package:fishdroid/pages/fish_recipe_list.dart';
@@ -96,7 +97,7 @@ class _ViewFishPageState extends State<ViewFishPage> {
                       margin: const EdgeInsets.symmetric(horizontal: 20),
                       width: MediaQuery.of(context).size.width - 80,
                       decoration: BoxDecoration(
-                        color: const Color(0xffC5D7F0),
+                        color: ColorsColors.primaryColor,
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(

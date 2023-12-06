@@ -1,3 +1,4 @@
+import 'package:fishdroid/includes/colors.dart';
 import 'package:fishdroid/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -19,7 +20,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
     return BottomNavigationBar(
       currentIndex: widget.onTabSelected,
       type: BottomNavigationBarType.fixed,
-      backgroundColor: const Color(0xffC5D7F0),
+      backgroundColor: ColorsColors.primaryColor,
       // selectedItemColor: Colors.grey,
       // fixedColor: const Color.fromARGB(255, 33, 120, 197),
       items: const <BottomNavigationBarItem>[

@@ -1,5 +1,6 @@
 // import 'package:fishdroid/includes/home_app_bar.dart';
 import 'package:fishdroid/data/trivia_data.dart';
+import 'package:fishdroid/includes/colors.dart';
 import 'package:fishdroid/pages/home.dart';
 import 'package:fishdroid/services/remote_services.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,7 @@ class _TriviaState extends State<Trivia> {
     super.initState();
     getTrivia();
 
-    if(!isLoaded){
+    if (!isLoaded) {
       Future.delayed(const Duration(seconds: 30), () {
         setState(() {
           showProgressIndicator = false;
@@ -44,9 +45,36 @@ class _TriviaState extends State<Trivia> {
   @override
   Widget build(BuildContext context) {
     if (trivia == null) {
-      return showProgressIndicator 
-        ? const Center(child: CircularProgressIndicator())
-        : const Center(child: Text("Can't Connect to the Server"));
+      return showProgressIndicator
+          ? const Scaffold(
+              backgroundColor: Color.fromARGB(255, 238, 238, 238),
+              body: Center(
+                child: CircularProgressIndicator(
+                  color: Colors.blueAccent,
+                ),
+              ),
+            )
+          : Scaffold(
+              backgroundColor: const Color.fromARGB(255, 238, 238, 238),
+              body: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Text("Can't Connect to the Server"),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const MyHomePage(pageIndex: 2)));
+                      },
+                      child: const Text("Continue"),
+                    ),
+                  ],
+                ),
+              ),
+            );
     } else {
       return Visibility(
         child: Scaffold(
@@ -68,7 +96,7 @@ class _TriviaState extends State<Trivia> {
                   height: MediaQuery.of(context).size.height - 100,
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
-                    color: const Color(0xffC5D7F0),
+                    color: ColorsColors.primaryColor,
                     borderRadius: BorderRadius.circular(15),
                     boxShadow: [
                       BoxShadow(
@@ -76,7 +104,8 @@ class _TriviaState extends State<Trivia> {
                             .withOpacity(0.5),
                         spreadRadius: 2,
                         blurRadius: 3,
-                        offset: const Offset(2, 2), // Adjust the values as needed
+                        offset:
+                            const Offset(2, 2), // Adjust the values as needed
                       ),
                     ],
                   ),

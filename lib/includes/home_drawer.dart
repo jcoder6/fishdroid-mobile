@@ -1,3 +1,4 @@
+import 'package:fishdroid/includes/colors.dart';
 import 'package:fishdroid/pages/game/game.dart';
 import 'package:fishdroid/pages/home.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,7 @@ class HomeDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: Container(
-        color: const Color(0xffC5D7F0),
+        color: ColorsColors.primaryColor,
         child: ListView(
           children: [
             DrawerHeader(

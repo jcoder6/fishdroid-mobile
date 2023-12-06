@@ -1,6 +1,6 @@
 import 'package:camera/camera.dart';
-// ignore: unused_import
 import 'package:fishdroid/includes/splash.dart';
+// ignore: unused_import
 import 'package:fishdroid/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(pageIndex: 0),
+      home: const MyHomePage(pageIndex: 0,),
       debugShowCheckedModeBanner: false,
     );
   }

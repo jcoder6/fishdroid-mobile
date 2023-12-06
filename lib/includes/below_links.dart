@@ -1,3 +1,4 @@
+import 'package:fishdroid/includes/colors.dart';
 import 'package:fishdroid/pages/game/game.dart';
 import 'package:fishdroid/pages/home.dart';
 import 'package:flutter/material.dart';
@@ -20,10 +21,10 @@ class BelowLinks extends StatelessWidget {
               'Explore',
               style: TextStyle(
                   fontSize: 18,
-                  color: Color(0xff154670),
+                  color: Color.fromARGB(255, 235, 235, 235),
                   fontWeight: FontWeight.bold),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
@@ -34,7 +35,7 @@ class BelowLinks extends StatelessWidget {
                     Navigator.push(
                       (context),
                       MaterialPageRoute(
-                        builder: (context) => MyHomePage(pageIndex: 7),
+                        builder: (context) => const MyHomePage(pageIndex: 7),
                       ),
                     );
                   },
@@ -42,19 +43,19 @@ class BelowLinks extends StatelessWidget {
                     width: 130,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: const Color(0xffC5D7F0),
+                      color: ColorsColors.primaryColor,
                       boxShadow: [
                         BoxShadow(
-                          color: Color.fromARGB(255, 107, 107, 107)
+                          color: const Color.fromARGB(255, 107, 107, 107)
                               .withOpacity(0.5),
                           spreadRadius: 2,
                           blurRadius: 3,
-                          offset: Offset(2, 2), // Adjust the values as needed
+                          offset: const Offset(2, 2), // Adjust the values as needed
                         ),
                       ],
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(
+                    child: const Padding(
+                      padding:  EdgeInsets.only(
                         top: 25,
                         bottom: 25,
                       ),
@@ -100,19 +101,19 @@ class BelowLinks extends StatelessWidget {
                     width: 130,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: const Color(0xffC5D7F0),
+                      color: ColorsColors.primaryColor,
                       boxShadow: [
                         BoxShadow(
-                          color: Color.fromARGB(255, 107, 107, 107)
+                          color: const Color.fromARGB(255, 107, 107, 107)
                               .withOpacity(0.5),
                           spreadRadius: 2,
                           blurRadius: 3,
-                          offset: Offset(2, 2), // Adjust the values as needed
+                          offset: const Offset(2, 2), // Adjust the values as needed
                         ),
                       ],
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(
+                    child: const Padding(
+                      padding:  EdgeInsets.only(
                         top: 25,
                         bottom: 25,
                       ),

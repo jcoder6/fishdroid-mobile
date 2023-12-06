@@ -1,4 +1,5 @@
 import 'package:fishdroid/data/hatchery.dart';
+import 'package:fishdroid/includes/colors.dart';
 import 'package:fishdroid/pages/view_hatching_page.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +28,7 @@ class _HatchItemState extends State<HatchItem> {
         margin: const EdgeInsets.only(bottom: 20),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: const Color(0xffC5D7F0),
+          color: ColorsColors.primaryColor,
           boxShadow: [
             BoxShadow(
               color: const Color.fromARGB(255, 107, 107, 107).withOpacity(0.5),

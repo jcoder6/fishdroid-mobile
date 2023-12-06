@@ -24,6 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
   // ignore: unused_field
   int _currentIndex = 0;
 
+  // ignore: unused_element
   void _onTabSelected(int index) {
     setState(() {
       _currentIndex = (widget.pageIndex < 5) ?  widget.pageIndex : 0;

@@ -26,6 +26,7 @@ class _SearchPageState extends State<SearchPage> {
 
   getSearch() async {
     fishesList = await RemoteService().searchFish(widget.search);
+    // print(widget.search);
     if (fishesList != null) {
       setState(() {
         isLoaded = true;

@@ -1,5 +1,7 @@
 import 'package:camera/camera.dart';
+import 'package:fishdroid/includes/colors.dart';
 import 'package:fishdroid/main.dart';
+import 'package:fishdroid/pages/search_page.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/cupertino.dart';
 import 'package:flutter_tflite/flutter_tflite.dart';
@@ -17,6 +19,7 @@ class _CameraPageState extends State<CameraPage> {
   String result = '';
   CameraController? cameraController;
   CameraImage? imgCamera;
+  var arrResult = [];
 
   initCamera() {
     cameraController = CameraController(cameras![0], ResolutionPreset.max);
@@ -62,19 +65,22 @@ class _CameraPageState extends State<CameraPage> {
         imageMean: 127.5,
         imageStd: 127.5,
         rotation: 90,
-        numResults: 2,
+        numResults: 1,
         threshold: 0.1,
         asynch: true,
       );
       result = '';
 
       if (recognitions != null) {
+        // ignore: avoid_function_literals_in_foreach_calls
         recognitions.forEach((response) {
-          result += response['label'] +
-              ' ' +
-              // (response['confidence'] * 100 - 30 as double).toStringAsFixed(2) +
-              // "%" +
-              "\n\n";
+          arrResult.add(response['label']);
+          result += response['label'];
+          //+
+          //' ' +
+          // (response['confidence'] * 100 - 30 as double).toStringAsFixed(2) +
+          // "%" +
+          // "\n\n";
         });
       }
 
@@ -88,7 +94,6 @@ class _CameraPageState extends State<CameraPage> {
 
   @override
   void dispose() async {
-    // TODO: implement dispose
     super.dispose();
 
     await Tflite.close();
@@ -125,11 +130,11 @@ class _CameraPageState extends State<CameraPage> {
                         initCamera();
                       },
                       child: Container(
-                        margin: EdgeInsets.only(top: 20),
+                        margin: const EdgeInsets.only(top: 20),
                         height: 500,
                         width: MediaQuery.of(context).size.width - 50,
                         child: imgCamera == null
-                            ? Container(
+                            ? SizedBox(
                                 height: 500,
                                 width: MediaQuery.of(context).size.width - 50,
                                 child: const Center(
@@ -158,27 +163,40 @@ class _CameraPageState extends State<CameraPage> {
                   height: 150,
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: const Color(0xffC5D7F0),
+                    color: ColorsColors.primaryColor,
                     boxShadow: [
                       BoxShadow(
-                        color:
-                            Color.fromARGB(255, 107, 107, 107).withOpacity(0.5),
+                        color: const Color.fromARGB(255, 107, 107, 107)
+                            .withOpacity(0.5),
                         spreadRadius: 2,
                         blurRadius: 3,
-                        offset: Offset(2, 2), // Adjust the values as needed
+                        offset:
+                            const Offset(2, 2), // Adjust the values as needed
                       ),
                     ],
                   ),
                   child: Center(
                     child: SingleChildScrollView(
-                      child: Text(
-                        result,
-                        style: const TextStyle(
-                          backgroundColor: Colors.white54,
-                          color: Color(0xff154670),
-                          fontSize: 25,
+                      child: TextButton(
+                        onPressed: () {
+                          // print(result.toLowerCase());
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: ((context) =>
+                                  SearchPage(result.toLowerCase())),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          result,
+                          style: const TextStyle(
+                            backgroundColor: Colors.white54,
+                            color: Color(0xff154670),
+                            fontSize: 25,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
                       ),
                     ),
                   ),

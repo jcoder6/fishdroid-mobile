@@ -1,4 +1,5 @@
 import 'package:fishdroid/data/recipe_data.dart';
+import 'package:fishdroid/includes/colors.dart';
 import 'package:fishdroid/services/remote_services.dart';
 import 'package:flutter/material.dart';
 import '../includes/home_app_bar.dart';
@@ -130,7 +131,7 @@ class _ViewRecipePageState extends State<ViewRecipePage> {
                 margin: const EdgeInsets.symmetric(horizontal: 20),
                 width: MediaQuery.of(context).size.width - 70,
                 decoration: BoxDecoration(
-                  color: const Color(0xffC5D7F0),
+                  color: ColorsColors.primaryColor,
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: [
                     BoxShadow(

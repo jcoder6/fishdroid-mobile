@@ -21,7 +21,6 @@ class _AppHomeState extends State<AppHome> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     fetchFishData();

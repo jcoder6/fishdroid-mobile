@@ -1,4 +1,5 @@
 import 'package:fishdroid/data/fishes.dart';
+import 'package:fishdroid/includes/colors.dart';
 import 'package:fishdroid/services/remote_services.dart';
 import 'package:fishdroid/data/nutrition_data.dart';
 import 'package:flutter/material.dart';
@@ -121,7 +122,7 @@ class _NutritionState extends State<Nutrition> {
               transform: Matrix4.translationValues(0, -150, 0),
               padding: const EdgeInsets.all(15),
               decoration: BoxDecoration(
-                color: const Color(0xffC5D7F0),
+                color: ColorsColors.primaryColor,
                 borderRadius: BorderRadius.circular(15),
                 boxShadow: [
                   BoxShadow(

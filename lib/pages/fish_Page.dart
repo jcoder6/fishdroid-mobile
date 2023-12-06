@@ -114,21 +114,24 @@ class _FishPagesState extends State<FishPages> {
                       child: Container(
                         width: MediaQuery.of(context).size.width - 50,
                         margin: const EdgeInsets.only(left: 10),
-                        child: TextField(
-                          controller: searchController,
-                          decoration: InputDecoration(
-                            hintText: 'Search...',
-                            border: InputBorder.none,
-                            suffixIcon: IconButton(
-                              icon: const Icon(Icons.search),
-                              onPressed: () {
-                                // Perform the search here
-                                // You can add your search logic here
-                                String searchInput = searchController.text;
-                                setState(() {
-                                  getSearch(searchInput);
-                                });
-                              },
+                        child: Container(
+                          margin: const EdgeInsets.only(top: 5),
+                          child: TextField(
+                            controller: searchController,
+                            decoration: InputDecoration(
+                              hintText: 'Search...',
+                              border: InputBorder.none,
+                              suffixIcon: IconButton(
+                                icon: const Icon(Icons.search),
+                                onPressed: () {
+                                  // Perform the search here
+                                  // You can add your search logic here
+                                  String searchInput = searchController.text;
+                                  setState(() {
+                                    getSearch(searchInput);
+                                  });
+                                },
+                              ),
                             ),
                           ),
                         ),

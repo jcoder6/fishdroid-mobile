@@ -1,3 +1,4 @@
+import 'package:fishdroid/includes/colors.dart';
 import 'package:fishdroid/pages/view_recipe_page.dart';
 import 'package:fishdroid/services/remote_services.dart';
 import 'package:flutter/material.dart';
@@ -131,7 +132,7 @@ class _RecipesState extends State<Recipes> {
               height: 650,
               transform: Matrix4.translationValues(0, -50, 0),
               decoration: BoxDecoration(
-                color: const Color(0xffC5D7F0),
+                color: ColorsColors.primaryColor,
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.5),

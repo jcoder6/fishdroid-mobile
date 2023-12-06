@@ -1,4 +1,5 @@
 import 'package:fishdroid/data/term.dart';
+import 'package:fishdroid/includes/colors.dart';
 import 'package:fishdroid/includes/home_app_bar.dart';
 import 'package:fishdroid/includes/home_drawer.dart';
 import 'package:fishdroid/services/remote_services.dart';
@@ -65,7 +66,7 @@ class _ViewTermPageState extends State<ViewTermPage> {
                 margin: const EdgeInsets.only(top: 50),
                 padding: const EdgeInsets.all(16.0),
                 decoration: BoxDecoration(
-                  color: const Color(0xffC5D7F0),
+                  color: ColorsColors.primaryColor,
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: [
                     BoxShadow(
