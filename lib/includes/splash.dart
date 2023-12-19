@@ -44,17 +44,24 @@ class _SplashState extends State<Splash> {
             Container(
               child: Column(
                 children: <Widget>[
+                  const SizedBox(
+                    height: 200,
+                    width: 220,
+                    child: Image(
+                      fit: BoxFit.fill,
+                      image: AssetImage(
+                        'images/fishdroid-logo.png',
+                      ),
+                    ),
+                  ),
                   Container(
-                      child: Image(
-                          image: AssetImage(
-                    'images/fishdroid-logo.png',
-                  ))),
-                  Container(
-                    transform: Matrix4.translationValues(0.0, -50.0, 0.0),
-                    child: Text(
+                    transform: Matrix4.translationValues(0.0, 0.0, 0.0),
+                    child: const Text(
                       'Fishdroid 2.0',
                       style: TextStyle(
-                          fontSize: 24, color: Color.fromARGB(255, 0, 56, 160)),
+                        fontSize: 24,
+                        color: Color.fromARGB(255, 0, 56, 160),
+                      ),
                     ),
                   )
                 ],
@@ -62,19 +69,16 @@ class _SplashState extends State<Splash> {
             ),
             Container(
               transform: Matrix4.translationValues(0.0, 170.0, 0.0),
-              child: Column(
+              child: const Column(
                 children: <Widget>[
-                  Container(
-                      child: Image(
-                          image: AssetImage(
+                  Image(
+                      image: AssetImage(
                     'images/logobfar.png',
-                  ))),
-                  Container(
-                    child: Text(
-                      'Powered by BFAR',
-                      style: TextStyle(
-                          fontSize: 16, color: Color.fromARGB(255, 0, 56, 160)),
-                    ),
+                  ),),
+                  Text(
+                    'Powered by BFAR',
+                    style: TextStyle(
+                        fontSize: 16, color: Color.fromARGB(255, 0, 56, 160)),
                   )
                 ],
               ),

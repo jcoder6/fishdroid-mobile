@@ -1,5 +1,6 @@
 import 'package:fishdroid/data/fishes.dart';
 import 'package:fishdroid/includes/below_links.dart';
+import 'package:fishdroid/includes/colors.dart';
 import 'package:fishdroid/pages/view_fish_page.dart';
 import 'package:fishdroid/services/remote_services.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,8 @@ class AppHome extends StatefulWidget {
 class _AppHomeState extends State<AppHome> {
   List<Fish>? fishesList;
   var isLoaded = false;
-  var imgFishLink = 'https://raw.githubusercontent.com/jcoder6/fishdroid_local/master/public/assets/images/fish_images/';
+  var imgFishLink =
+      'https://raw.githubusercontent.com/jcoder6/fishdroid_local/master/public/assets/images/fish_images/';
   bool showProgressIndicator = true;
 
   @override
@@ -24,7 +26,7 @@ class _AppHomeState extends State<AppHome> {
     super.initState();
 
     fetchFishData();
-    if(!isLoaded){
+    if (!isLoaded) {
       Future.delayed(const Duration(seconds: 30), () {
         setState(() {
           showProgressIndicator = false;
@@ -35,7 +37,7 @@ class _AppHomeState extends State<AppHome> {
 
   fetchFishData() async {
     fishesList = await RemoteService().getFishes();
-    if(fishesList != null){
+    if (fishesList != null) {
       setState(() {
         isLoaded = true;
       });
@@ -48,10 +50,9 @@ class _AppHomeState extends State<AppHome> {
     return Visibility(
       visible: isLoaded,
       replacement: Center(
-        child: showProgressIndicator 
-            ? const CircularProgressIndicator() 
-            : const Text("Can't connect to the server")
-        ),
+          child: showProgressIndicator
+              ? const CircularProgressIndicator()
+              : const Text("Can't connect to the server")),
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -67,12 +68,6 @@ class _AppHomeState extends State<AppHome> {
                   image: AssetImage('images/img-bg-design/bg-fish.jpg'),
                   fit: BoxFit.fill,
                 ),
-                //     gradient: LinearGradient(
-                //   colors: [Color.fromARGB(255, 158, 212, 253), Color(0xff0c82df)],
-                //   stops: [0, 1],
-                //   begin: Alignment.bottomCenter,
-                //   end: Alignment.topCenter,
-                // ),
               ),
               child: const Padding(
                 padding: EdgeInsets.all(25.0),
@@ -111,18 +106,6 @@ class _AppHomeState extends State<AppHome> {
             Container(
               height: 250,
               transform: Matrix4.translationValues(0, -130, 0),
-              // width: 170,
-              // decoration: BoxDecoration(
-              //   borderRadius: BorderRadius.circular(10),
-              //   boxShadow: [
-              //     BoxShadow(
-              //       color: Colors.black.withOpacity(0.3),
-              //       spreadRadius: 2,
-              //       blurRadius: 5,
-              //       offset: Offset(2, -2), // Adjust the values as needed
-              //     ),
-              //   ],
-              // ),
               child: ScrollSnapList(
                 itemBuilder: _fishBuilder,
                 itemCount: fishesList?.length ?? 0,
@@ -131,7 +114,81 @@ class _AppHomeState extends State<AppHome> {
                 dynamicItemSize: true,
               ),
             ),
-            const BelowLinks()
+            const BelowLinks(),
+            Container(
+              padding: EdgeInsets.all(25),
+              transform: Matrix4.translationValues(0, -50, 0),
+              width: MediaQuery.of(context).size.width - 50,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: ColorsColors.primaryColor,
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color.fromARGB(255, 107, 107, 107)
+                        .withOpacity(0.5),
+                    spreadRadius: 2,
+                    blurRadius: 3,
+                    offset: const Offset(2, 2), // Adjust the values as needed
+                  ),
+                ],
+              ),
+              child: Column(
+                children: [
+                  Center(
+                    child: Text(
+                      'About',
+                      style: const TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xff154670),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'FishDroid 2.0, an Android-based application, seamlessly integrates information dissemination on diverse fish species with an innovative image recognition feature. Its primary objective is to foster awareness and conservation of aquatic life. Users can fluidly navigate through features such as live scanning via the camera for real-time fish identification, personalized fish recipes, an engaging picture guessing game, and a spectrum of additional functionalities aimed at enhancing the overall user experience.',
+                    style: const TextStyle(
+                      fontSize: 16,
+                      height: 2,
+                    ),
+                    textAlign: TextAlign.justify,
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Center(
+                    child: Text(
+                      'Powered by:',
+                      style: const TextStyle(
+                        color: Color.fromARGB(255, 123, 123, 123),
+                        fontSize: 13,
+                        height: 2,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'images/logobfar.png',
+                        height: 45,
+                        width: 45,
+                        fit: BoxFit.cover,
+                      ),
+                      Image.asset(
+                        'images/fishdroid-logo.png',
+                        height: 45,
+                        width: 45,
+                        fit: BoxFit.cover,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),
@@ -142,10 +199,8 @@ class _AppHomeState extends State<AppHome> {
     var fishItem = fishesList?[index];
     return GestureDetector(
       onTap: () => {
-        Navigator.push(
-            (context),
-            MaterialPageRoute(
-                builder: (context) => ViewFishPage(fishItem.id)))
+        Navigator.push((context),
+            MaterialPageRoute(builder: (context) => ViewFishPage(fishItem.id)))
       },
       child: Container(
         height: 250,
@@ -204,7 +259,8 @@ class _AppHomeState extends State<AppHome> {
                       ),
                       child: Text(
                         fishItem.localName,
-                        style: const TextStyle(color: Colors.white, fontSize: 12),
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 12),
                       ),
                     ),
                   ),

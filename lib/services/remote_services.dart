@@ -12,17 +12,18 @@ import 'package:http/http.dart' as http;
 
 class RemoteService {
   final client = http.Client();
-  final apiServer = 'http://127.0.0.1:8080/';
+  final apiServer = 'http://192.168.0.195:8080/';
+  // final apiServer = 'http://192.168.100.152:8080/';
 
-  final apiFishLink = 'http://127.0.0.1:8080/api/fishes/';
-  final apiRecipeLink = 'http://127.0.0.1:8080/api/recipes/';
-  final apiTermLink = 'http://127.0.0.1:8080/api/terms/';
-  final apiNutriLink = 'http://127.0.0.1:8080/api/nutritions/';
-  final apiTriviaLink = 'http://127.0.0.1:8080/api/trivia/';
-  final apiHatcheryLink = 'http://127.0.0.1:8080/api/hatchery/';
-  final apiHatchVideoLink = 'http://127.0.0.1:8080/api/hatchvideos/';
-  final apiGameLink = 'http://127.0.0.1:8080/api/game/';
-  final apiMessageLink = 'http://127.0.0.1:8080/api/message';
+  late final apiFishLink = '${apiServer}api/fishes/';
+  late final apiRecipeLink = '${apiServer}api/recipes/';
+  late final apiTermLink = '${apiServer}api/terms/';
+  late final apiNutriLink = '${apiServer}api/nutritions/';
+  late final apiTriviaLink = '${apiServer}api/trivia';
+  late final apiHatcheryLink = '${apiServer}api/hatchery/';
+  late final apiHatchVideoLink = '${apiServer}api/hatchvideos/';
+  late final apiGameLink = '${apiServer}api/game/';
+  late final apiMessageLink = '${apiServer}api/message';
 
   /*
     FISH API

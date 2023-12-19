@@ -24,7 +24,6 @@ class _ViewFishPageState extends State<ViewFishPage> {
       'https://raw.githubusercontent.com/jcoder6/fishdroid_local/master/public/assets/images/fish_images/';
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getCurrentFish();
   }

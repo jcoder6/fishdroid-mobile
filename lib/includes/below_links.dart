@@ -21,7 +21,7 @@ class BelowLinks extends StatelessWidget {
               'Explore',
               style: TextStyle(
                   fontSize: 18,
-                  color: Color.fromARGB(255, 235, 235, 235),
+                  color: ColorsColors.secondaryColor,
                   fontWeight: FontWeight.bold),
             ),
             const SizedBox(

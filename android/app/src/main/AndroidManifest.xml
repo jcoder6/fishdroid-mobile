@@ -5,7 +5,7 @@
     
 
    <application
-        android:label="fishdroid"
+        android:label="Fishdroid 2.0"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:usesCleartextTraffic="true">

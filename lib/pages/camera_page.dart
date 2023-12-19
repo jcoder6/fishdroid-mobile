@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 // import 'package:flutter/cupertino.dart';
 import 'package:flutter_tflite/flutter_tflite.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// import 'package:get/get.dart';
 
 class CameraPage extends StatefulWidget {
   const CameraPage({super.key});
@@ -17,9 +18,10 @@ class CameraPage extends StatefulWidget {
 class _CameraPageState extends State<CameraPage> {
   bool isWorking = false;
   String result = '';
+  String first = '';
+  String second = '';
   CameraController? cameraController;
   CameraImage? imgCamera;
-  var arrResult = [];
 
   initCamera() {
     cameraController = CameraController(cameras![0], ResolutionPreset.max);
@@ -65,7 +67,7 @@ class _CameraPageState extends State<CameraPage> {
         imageMean: 127.5,
         imageStd: 127.5,
         rotation: 90,
-        numResults: 1,
+        numResults: 2,
         threshold: 0.1,
         asynch: true,
       );
@@ -74,8 +76,7 @@ class _CameraPageState extends State<CameraPage> {
       if (recognitions != null) {
         // ignore: avoid_function_literals_in_foreach_calls
         recognitions.forEach((response) {
-          arrResult.add(response['label']);
-          result += response['label'];
+          result += response['label'] + ",";
           //+
           //' ' +
           // (response['confidence'] * 100 - 30 as double).toStringAsFixed(2) +
@@ -84,8 +85,12 @@ class _CameraPageState extends State<CameraPage> {
         });
       }
 
+      print(result.split(','));
+
       setState(() {
         result;
+        first = result.split(',')[0];
+        second = result.split(',').length > 1 ? result.split(',')[1] : '';
       });
 
       isWorking = false;
@@ -105,6 +110,7 @@ class _CameraPageState extends State<CameraPage> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
+          height: MediaQuery.of(context).size.height,
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [Color.fromARGB(255, 158, 212, 253), Color(0xff0c82df)],
@@ -115,12 +121,30 @@ class _CameraPageState extends State<CameraPage> {
           ),
           child: Column(
             children: [
+              SizedBox(
+                height: 37,
+              ),
+              Container(
+                padding: EdgeInsets.all(15),
+                // color: ColorsColors.primaryColor,
+                child: Center(
+                  child: Text(
+                    'Fishdroid 2.0: Image Recognition',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
               Stack(
                 children: [
                   Center(
                     child: Container(
+                      margin: EdgeInsets.only(top: 10),
                       height: 500,
-                      width: MediaQuery.of(context).size.width - 50,
+                      width: 300,
                       color: const Color.fromARGB(255, 6, 19, 41),
                     ),
                   ),
@@ -132,7 +156,7 @@ class _CameraPageState extends State<CameraPage> {
                       child: Container(
                         margin: const EdgeInsets.only(top: 20),
                         height: 500,
-                        width: MediaQuery.of(context).size.width - 50,
+                        width: 300,
                         child: imgCamera == null
                             ? SizedBox(
                                 height: 500,
@@ -177,26 +201,51 @@ class _CameraPageState extends State<CameraPage> {
                   ),
                   child: Center(
                     child: SingleChildScrollView(
-                      child: TextButton(
-                        onPressed: () {
-                          // print(result.toLowerCase());
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: ((context) =>
-                                  SearchPage(result.toLowerCase())),
+                      child: Column(
+                        children: [
+                          TextButton(
+                            onPressed: () {
+                              // print(result.toLowerCase());
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: ((context) =>
+                                      SearchPage(first.toLowerCase())),
+                                ),
+                              );
+                            },
+                            child: Text(
+                              first,
+                              style: const TextStyle(
+                                backgroundColor: Colors.white54,
+                                color: Color(0xff154670),
+                                fontSize: 25,
+                              ),
+                              textAlign: TextAlign.center,
                             ),
-                          );
-                        },
-                        child: Text(
-                          result,
-                          style: const TextStyle(
-                            backgroundColor: Colors.white54,
-                            color: Color(0xff154670),
-                            fontSize: 25,
                           ),
-                          textAlign: TextAlign.center,
-                        ),
+                          TextButton(
+                            onPressed: () {
+                              // print(result.toLowerCase());
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: ((context) =>
+                                      SearchPage(second.toLowerCase())),
+                                ),
+                              );
+                            },
+                            child: Text(
+                              second,
+                              style: const TextStyle(
+                                backgroundColor: Colors.white54,
+                                color: Color(0xff154670),
+                                fontSize: 25,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),

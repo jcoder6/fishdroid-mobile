@@ -25,7 +25,6 @@ class _HatchItemState extends State<HatchItem> {
       },
       child: Container(
         padding: const EdgeInsets.all(15),
-        margin: const EdgeInsets.only(bottom: 20),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: ColorsColors.primaryColor,
@@ -41,6 +40,7 @@ class _HatchItemState extends State<HatchItem> {
         child: Center(
           child: Text(
             widget.hatchItem.fishName,
+            textAlign: TextAlign.center,
             style: const TextStyle(
               color: Color(0xff154670),
               fontSize: 20,

@@ -27,6 +27,7 @@ class _HatcheriesState extends State<Hatcheries> {
       setState(() {
         isLoaded = true;
       });
+      print(hatcheryList);
     }
   }
 
@@ -61,7 +62,7 @@ class _HatcheriesState extends State<Hatcheries> {
                   crossAxisSpacing: 20,
                 ),
                 shrinkWrap: true,
-                itemCount: 2,
+                itemCount: hatcheryList?.length,
                 itemBuilder: (BuildContext context, int index) {
                   return HatchItem(hatcheryList![index]);
                 },

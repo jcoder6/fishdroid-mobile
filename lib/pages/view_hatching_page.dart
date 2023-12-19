@@ -35,6 +35,7 @@ class _ViewHatcingPageState extends State<ViewHatcingPage> {
       setState(() {
         isLoaded = true;
       });
+      print(hatchItem);
     }
   }
 
@@ -49,15 +50,12 @@ class _ViewHatcingPageState extends State<ViewHatcingPage> {
   }
 
     var url = 'https://www.youtube.com/watch?v=8idjfS1Wg10&t=242s';
-  launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(
-        url,
-        forceWebView: false, // Set to true to force opening in a WebView
-      );
-    } else {
+  Future<void> _launchUrl(String url) async {
+    var uri = Uri.parse(url);
+    if (!await launchUrl(uri)) {
       throw 'Could not launch $url';
-    }
+    } 
+    
   }
 
   @override
@@ -100,7 +98,7 @@ class _ViewHatcingPageState extends State<ViewHatcingPage> {
                                         width: 30,
                                       ),
                                       ElevatedButton(
-                                        onPressed: () => launchURL(hatchVideo.videoLink),
+                                        onPressed: () => _launchUrl(hatchVideo.videoLink),
                                         style: ElevatedButton.styleFrom(
                                           foregroundColor: Colors.white,
                                           backgroundColor: Colors.red,

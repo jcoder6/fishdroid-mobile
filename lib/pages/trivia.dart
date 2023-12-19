@@ -20,7 +20,6 @@ class _TriviaState extends State<Trivia> {
       'https://raw.githubusercontent.com/jcoder6/fishdroid_local/master/public/assets/videos/trivia_videos/';
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getTrivia();
 

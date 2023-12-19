@@ -17,11 +17,12 @@ class ViewRecipePage extends StatefulWidget {
 class _ViewRecipePageState extends State<ViewRecipePage> {
   List<Recipe>? recipeLists;
   var isLoaded = false;
+  var defaultImageLink =
+      "https://raw.githubusercontent.com/jcoder6/fishdroid_local/master/public/assets/images/default_img.PNG";
   var imgRecipeLink = "https://raw.githubusercontent.com/jcoder6/fishdroid_local/master/public/assets/images/recipe_images/";
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getRecipe();     
   }
@@ -112,7 +113,11 @@ class _ViewRecipePageState extends State<ViewRecipePage> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   image: DecorationImage(
-                      image: NetworkImage(imgRecipeLink + recipeItem.recipeImg),
+                      image: NetworkImage(recipeItem.recipeImg !=
+                                                  "NO_IMG_YET"
+                                              ? imgRecipeLink +
+                                                  recipeItem.recipeImg
+                                              : defaultImageLink,),
                       fit: BoxFit.fill),
                   boxShadow: [
                     BoxShadow(

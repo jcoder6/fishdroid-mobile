@@ -18,6 +18,8 @@ class _RecipesState extends State<Recipes> {
   List<Recipe>? allRecipes;
   var isLoaded = false;
   var isAllRecipe = false;
+  var defaultImageLink =
+      "https://raw.githubusercontent.com/jcoder6/fishdroid_local/master/public/assets/images/default_img.PNG";
   var imgRecipeLink =
       "https://raw.githubusercontent.com/jcoder6/fishdroid_local/master/public/assets/images/recipe_images/";
 
@@ -212,7 +214,9 @@ class _RecipesState extends State<Recipes> {
           ],
           borderRadius: BorderRadius.circular(10),
           image: DecorationImage(
-            image: NetworkImage(imgRecipeLink + recipeItem.recipeImg),
+            image: NetworkImage(recipeItem.recipeImg != "NO_IMG_YET"
+                ? imgRecipeLink + recipeItem.recipeImg
+                : defaultImageLink),
             fit: BoxFit.cover,
           ),
         ),

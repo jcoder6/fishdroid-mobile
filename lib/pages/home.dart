@@ -50,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 238, 238, 238),
-      appBar: HomeAppBar(),
+      appBar: widget.pageIndex != 2 ? HomeAppBar() : null,
       endDrawer: const HomeDrawer(),
       body: tabs[widget.pageIndex],
       bottomNavigationBar: CustomBottomNavigationBar(

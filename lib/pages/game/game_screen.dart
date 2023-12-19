@@ -56,7 +56,7 @@ class _GameScreenState extends State<GameScreen> {
             child: CircularProgressIndicator(),
           )
         : Scaffold(
-            backgroundColor: Colors.black87,
+            backgroundColor: Color.fromARGB(255, 48, 48, 48),
             appBar: AppBar(
               title: Container(
                 padding: const EdgeInsets.all(1),
