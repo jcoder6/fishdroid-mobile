@@ -69,12 +69,14 @@ class _SplashState extends State<Splash> {
             ),
             Container(
               transform: Matrix4.translationValues(0.0, 170.0, 0.0),
-              child: const Column(
+              child: Column(
                 children: <Widget>[
-                  Image(
-                      image: AssetImage(
-                    'images/logobfar.png',
-                  ),),
+                  Image.asset(
+                        'images/logobfar.png',
+                        height: 45,
+                        width: 45,
+                        fit: BoxFit.cover,
+                      ),
                   Text(
                     'Powered by BFAR',
                     style: TextStyle(
